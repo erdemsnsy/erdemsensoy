@@ -3,7 +3,7 @@
 <h3 align="center">Yazılım Geliştirici</h3>
 
 <p align="center">
-  Modern, kullanıcı odaklı ve işlevsel web, mobil ve masaüstü uygulamalar geliştiriyorum.
+  Modern, kullanıcı odaklı ve işlevsel web ve mobil uygulamalar geliştiriyorum.
 </p>
 
 ---
@@ -11,7 +11,7 @@
 ## 👨‍💻 Hakkımda
 
 - Bilgisayar Programcılığı alanında eğitim aldım.
-- Web, mobil ve masaüstü uygulamalar geliştiriyorum.
+- Web ve mobil uygulamalar geliştiriyorum.
 - Kullanıcı deneyimine, sade tasarıma ve işlevsel çözümlere önem veriyorum.
 
 ---
@@ -29,8 +29,6 @@
 <p>
   <img src="https://img.shields.io/badge/Flutter-20232A?style=for-the-badge&logo=flutter&logoColor=54C5F8" />
   <img src="https://img.shields.io/badge/Dart-20232A?style=for-the-badge&logo=dart&logoColor=0175C2" />
-  <img src="https://img.shields.io/badge/C%23-20232A?style=for-the-badge&logo=dotnet&logoColor=512BD4" />
-  <img src="https://img.shields.io/badge/Python-20232A?style=for-the-badge&logo=python&logoColor=3776AB" />
   <img src="https://img.shields.io/badge/Supabase-20232A?style=for-the-badge&logo=supabase&logoColor=3FCF8E" />
 </p>
 
@@ -39,6 +37,7 @@
   <img src="https://img.shields.io/badge/GitHub-20232A?style=for-the-badge&logo=github&logoColor=FFFFFF" />
   <img src="https://img.shields.io/badge/VS_Code-20232A?style=for-the-badge&logo=visualstudiocode&logoColor=007ACC" />
   <img src="https://img.shields.io/badge/Android_Studio-20232A?style=for-the-badge&logo=androidstudio&logoColor=3DDC84" />
+  <img src="https://img.shields.io/badge/Vercel-20232A?style=for-the-badge&logo=vercel&logoColor=FFFFFF" />
 </p>
 
 ---

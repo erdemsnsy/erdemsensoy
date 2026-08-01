@@ -1,7 +1,7 @@
 <h1 align="center">Merhaba, ben Erdem Şensoy 👋</h1>
 
 <h3 align="center">
-  Yazılım Geliştirici | AI Destekli Web ve Mobil Uygulamalar
+  Yazılım Geliştirici | AI Destekli Web, Mobil ve Masaüstü Uygulamalar
 </h3>
 
 <p align="center">

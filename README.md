@@ -59,7 +59,7 @@ Bir hukuk bürosunun hizmetlerini ve çalışma alanlarını tanıtan; hukuki ma
 
 ### 📚 Kütüphane Otomasyonu
 
-Kitap, kullanıcı, stok, ödünç alma, satın alma ve yönetici işlemlerini kapsayan otomasyon sistemi.
+Kullanıcı rolleri, kitap ve stok yönetimi, ödünç alma, duyuru paylaşma, satın alma ve sipariş takibi gibi daha birçok özelliklere sahip kapsamlı bir kütüphane yönetim sistemi.
 
 ---
 

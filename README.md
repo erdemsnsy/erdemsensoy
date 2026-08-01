@@ -53,6 +53,6 @@ E-ticaret satıcılarının maliyet, komisyon, kargo ve vergi giderlerini hesapl
 
 Bir hukuk bürosunun hizmetlerini ve çalışma alanlarını tanıtan; makaleler, hesaplama araçları, dilekçe oluşturma ve iletişim bölümleri içeren responsive web sitesi.
 
-### 📚 Kütüphane Otomasyonu — Yeniden geliştiriliyor
+### 📚 Kütüphane Otomasyonu
 
 Kullanıcı rolleri, kitap ve stok yönetimi, ödünç alma, satın alma ve yönetici işlemlerini kapsayan kapsamlı bir kütüphane yönetim sistemi.

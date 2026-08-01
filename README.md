@@ -1,11 +1,9 @@
 <h1 align="center">Merhaba, ben Erdem Şensoy 👋</h1>
 
-<h3 align="center">
-  Yazılım Geliştirici | Web, Mobil ve Masaüstü Uygulamalar
-</h3>
+<h3 align="center">Yazılım Geliştirici</h3>
 
 <p align="center">
-  Modern, kullanıcı odaklı ve işlevsel yazılım projeleri geliştiriyorum.
+  Modern, kullanıcı odaklı ve işlevsel web, mobil ve masaüstü uygulamalar geliştiriyorum.
 </p>
 
 ---
@@ -14,9 +12,7 @@
 
 - Bilgisayar Programcılığı alanında eğitim aldım.
 - Web, mobil ve masaüstü uygulamalar geliştiriyorum.
-- Projenin ihtiyaçlarına göre farklı teknolojileri araştırıp uyguluyorum.
 - Kullanıcı deneyimine, sade tasarıma ve işlevsel çözümlere önem veriyorum.
-- Fikirleri çalışan ve kullanılabilir ürünlere dönüştürmeye odaklanıyorum.
 
 ---
 
@@ -49,20 +45,14 @@
 
 ## 🚀 Öne Çıkan Projeler
 
-### 🧾 Kâr Fişi
+### 🧾 [Kâr Fişi](https://karfisi.vercel.app/)
 
-E-ticaret satıcılarının ürün maliyeti, pazaryeri komisyonu, kargo ve vergi giderlerini hesaplayarak gerçek net kârlarını görmelerini sağlayan web uygulaması. Toplu ürün analizi, hedef satış fiyatı hesaplama ve raporlama gibi gelişmiş özellikler içerir.
+E-ticaret satıcılarının maliyet, komisyon, kargo ve vergi giderlerini hesaplayarak net kârlarını görmelerini sağlayan web uygulaması.
 
-### ⚖️ Şensoy Hukuk ve Danışmanlık
+### ⚖️ [Şensoy Hukuk ve Danışmanlık](https://hukukvedanismanlik.vercel.app/)
 
-Bir hukuk bürosunun hizmetlerini ve çalışma alanlarını tanıtan; hukuki makaleler, hesaplama araçları, online dilekçe oluşturma ve iletişim bölümleri içeren modern ve responsive web sitesi.
+Bir hukuk bürosunun hizmetlerini ve çalışma alanlarını tanıtan; makaleler, hesaplama araçları, dilekçe oluşturma ve iletişim bölümleri içeren responsive web sitesi.
 
-### 📚 Kütüphane Otomasyonu
+### 📚 Kütüphane Otomasyonu — Yeniden geliştiriliyor
 
-Kullanıcı rolleri, kitap ve stok yönetimi, ödünç alma, duyuru paylaşma, satın alma ve sipariş takibi gibi daha birçok özelliklere sahip kapsamlı bir kütüphane yönetim sistemi.
-
----
-
-<p align="center">
-  <b>Öğrenmeye, üretmeye ve projelerimi geliştirmeye devam ediyorum.</b>
-</p>
+Kullanıcı rolleri, kitap ve stok yönetimi, ödünç alma, satın alma ve yönetici işlemlerini kapsayan kapsamlı bir kütüphane yönetim sistemi.

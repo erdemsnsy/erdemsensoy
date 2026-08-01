@@ -49,25 +49,17 @@
 
 ## 🚀 Öne Çıkan Projeler
 
-### 🧭 Hayat Pusulası
+### 🧾 Kâr Fişi
 
-Kullanıcıların kendilerini daha iyi tanımalarına ve kararlarını değerlendirmelerine yardımcı olan modern bir web uygulaması.
+E-ticaret satıcılarının ürün maliyeti, pazaryeri komisyonu, kargo ve vergi giderlerini hesaplayarak gerçek net kârlarını görmelerini sağlayan web uygulaması. Toplu ürün analizi, hedef satış fiyatı hesaplama ve raporlama gibi gelişmiş özellikler içerir.
 
-### 📸 SnapRush
+### ⚖️ Şensoy Hukuk ve Danışmanlık
 
-İki oyunculu, gerçek zamanlı eşleşme ve fotoğraf doğrulama özelliklerine sahip mobil oyun.
-
-### 🚌 Cide Belediyesi Otobüs Takip Sistemi
-
-Otobüs konumlarının, durakların ve tahmini varış sürelerinin harita üzerinden görüntülendiği web uygulaması.
+Bir hukuk bürosunun hizmetlerini ve çalışma alanlarını tanıtan; hukuki makaleler, hesaplama araçları, online dilekçe oluşturma ve iletişim bölümleri içeren modern ve responsive web sitesi.
 
 ### 📚 Kütüphane Otomasyonu
 
 Kitap, kullanıcı, stok, ödünç alma, satın alma ve yönetici işlemlerini kapsayan otomasyon sistemi.
-
-### 🎬 Film Günlüğüm
-
-Kullanıcıların izledikleri ve izlemek istedikleri filmleri yönetebildikleri Flutter tabanlı mobil uygulama.
 
 ---
 

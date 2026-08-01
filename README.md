@@ -68,9 +68,7 @@ Yapay zekâyı yalnızca kod yazdırmak için değil; araştırma, planlama, hat
 
 <p>
   <img src="https://img.shields.io/badge/ChatGPT-20232A?style=for-the-badge&logo=openai&logoColor=FFFFFF" />
-  <img src="https://img.shields.io/badge/Cursor-20232A?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Claude_Code-20232A?style=for-the-badge&logo=anthropic&logoColor=FFFFFF" />
-  <img src="https://img.shields.io/badge/Windsurf-20232A?style=for-the-badge" />
 </p>
 
 > Teknoloji seçimimi tek bir programlama diliyle sınırlandırmıyorum.  

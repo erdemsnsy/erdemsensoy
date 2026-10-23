@@ -1,4 +1,4 @@
-﻿import { ICONS } from '@/lib/icons';
+import { ICONS } from '@/lib/icons';
 
 export function Brand({ name, size }: { name: keyof typeof ICONS; size: number }) {
   return (

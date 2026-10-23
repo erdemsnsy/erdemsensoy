@@ -1,4 +1,4 @@
-﻿// lib/portfolio-logic.ts içindeki `// @src:<ad>` ... `// @src:end` bloklarını "kaynak kodu" paneli için string olarak dışa aktarır.
+// lib/portfolio-logic.ts içindeki `// @src:<ad>` ... `// @src:end` bloklarını "kaynak kodu" paneli için string olarak dışa aktarır.
 const fs = require('fs');
 const src = fs.readFileSync('lib/portfolio-logic.ts', 'utf8').replace(/\r\n/g, '\n');
 const out = {};

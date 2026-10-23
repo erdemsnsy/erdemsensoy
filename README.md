@@ -1,4 +1,4 @@
-﻿# Erdem Şensoy — portfolyo + 08dijital
+# Erdem Şensoy — portfolyo + 08dijital
 
 Next.js (App Router) + TypeScript. `/` portfolyo, `/freelance` 08dijital.
 

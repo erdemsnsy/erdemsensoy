@@ -1,4 +1,4 @@
-﻿import Freelance from '@/components/Freelance';
+import Freelance from '@/components/Freelance';
 
 export default function Page() {
   return <Freelance />;

@@ -1,4 +1,4 @@
-﻿const fs=require('fs');
+const fs=require('fs');
 const base='_extract/design_handoff_portfolyo_08dijital/';
 for (const [f,o] of [['Portfolyo.dc.html','lib/en-portfolio.json'],['Freelance.dc.html','lib/en-freelance.json']]) {
   const s=fs.readFileSync(base+f,'utf8');

@@ -1,7 +1,8 @@
-﻿.next
+.next
 node_modules
 _extract
 *.tsbuildinfo
 
 *.zip
 
+.vercel

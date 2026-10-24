@@ -215,6 +215,7 @@ export default function Portfolio() {
           <E className="p-hero-in" st="position:relative;width:100%;height:100%;max-width:1280px;margin:0 auto;padding:clamp(24px,3.4vw,48px) clamp(20px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,2.6vw,36px);pointer-events:none">
             <E st="display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;font-size:14px;color:var(--mute)">
               <span>{t('Frontend Developer · İstanbul')}</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><span style={{ width: 8, height: 8, borderRadius: '50%', background: '#E35D17', flex: 'none', animation: 'pulse 2s infinite' }}></span>{t('Tam zamanlı pozisyonlara açığım')}</span>
             </E>
             <div id="hero-name" className="p-hero-name" style={{ width: '100%', flex: '1 1 0', minHeight: 110, maxHeight: 470 }}></div>
             <E st="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px 48px;align-items:end;border-top:1px solid var(--line);padding-top:clamp(20px,2.4vw,32px);pointer-events:auto">

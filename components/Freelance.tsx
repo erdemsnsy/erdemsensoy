@@ -209,6 +209,9 @@ export default function Freelance() {
               <E as="a" href="#iletisim" st="background:#E35D17;color:#fff;padding:16px 26px;font-weight:600;font-size:16px;border-radius:999px;white-space:nowrap;flex:none" hv="background:#fff;color:#111">{t('Projeni konuşalım')}</E>
               <E as="a" href="#hizmetler" st="border:1px solid #555;padding:15px 26px;font-weight:600;font-size:16px;border-radius:999px;white-space:nowrap;flex:none;background:rgba(14,14,14,.6)" hv="border-color:#fff;color:#fff">{t('Hizmetleri gör')}</E>
             </div>
+            <div className="f-trust" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 22px', marginTop: 'clamp(28px,3vw,40px)', fontSize: 14, color: '#BBB' }}>
+              {['Ücretsiz ilk görüşme', 'Aracı yok, doğrudan iletişim', 'Teslimden sonra da destek'].map(x => <span key={x} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>{DOT}{t(x)}</span>)}
+            </div>
           </E>
         </div>
       </section>

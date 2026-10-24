@@ -354,7 +354,7 @@ export default function Portfolio() {
         <footer style={{ maxWidth: 1280, margin: '0 auto', padding: '28px clamp(20px,4vw,48px) 40px' }}>
           <E st="display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;font-size:14px;color:var(--mute)">
             <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em', color: 'var(--fg)' }}>Erdem Şensoy<span style={{ color: '#E35D17' }}>.</span></span>
-            <span style={{ display: 'flex', gap: 20 }}><span>{t('© 2026 · İstanbul')}</span><a href="#top" style={{ color: 'var(--fg)' }}>{t('Başa dön ↑')}</a></span>
+            <span style={{ display: 'flex', gap: 20 }}><a href="#top" style={{ color: 'var(--fg)' }}>{t('Başa dön ↑')}</a></span>
           </E>
         </footer>
 

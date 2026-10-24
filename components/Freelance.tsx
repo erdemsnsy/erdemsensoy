@@ -381,7 +381,6 @@ export default function Freelance() {
         <E st="display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap;font-size:14px">
           <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/ahtapot.png" alt="" style={{ width: 24, height: 24 }} />08dijital<span style={{ color: '#E35D17', marginLeft: -8 }}>.</span></span>
           <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', color: '#444' }}><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a><a href="https://instagram.com/08dijitalcom" target="_blank">Instagram</a><a href="/">{t('Portfolyo')}</a></nav>
-          <span style={{ color: '#777' }}>{t('© 2026 · İstanbul')}</span>
         </E>
         <div style={{ marginTop: 24, borderTop: '1px solid #E6E6E6', paddingTop: 16, display: 'flex', justifyContent: 'flex-end', gap: 16, flexWrap: 'wrap', fontSize: 13, color: '#777' }}><a href="#top">{t('Başa dön ↑')}</a></div>
         <div style={{ fontSize: 'clamp(48px,8vw,120px)', fontWeight: 800, letterSpacing: '-0.06em', lineHeight: 1, margin: 'clamp(12px,1.6vw,20px) 0 0', paddingBottom: 'clamp(20px,2.4vw,32px)', textAlign: 'center', whiteSpace: 'nowrap', color: '#111', userSelect: 'none' }}>08dijital<span style={{ color: '#E35D17' }}>.</span></div>

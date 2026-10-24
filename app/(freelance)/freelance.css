@@ -17,10 +17,10 @@ input::placeholder,textarea::placeholder{color:#888}
 header>div{flex-wrap:nowrap!important}
 header nav{flex-wrap:nowrap!important;gap:12px 14px!important}
 .f-top{min-height:0!important}
-.f-hero-in{padding-top:32px!important;padding-bottom:200px!important}
+.f-hero-in{padding-top:28px!important;padding-bottom:150px!important}
 .f-h1{font-size:11.5vw!important}
 .f-hero-btns a{flex:1 1 auto!important;text-align:center}
-.f-octo{width:300px!important;right:-90px!important;bottom:-70px!important}
+.f-octo{width:250px!important;right:-70px!important;bottom:-50px!important}
 .f-qr{aspect-ratio:1/1!important}
 .f-chip{min-height:44px;display:inline-flex!important;align-items:center}
 .f-send a{flex:1 1 100%;text-align:center}
@@ -54,4 +54,35 @@ html[data-octo=in] body::after{content:'';position:fixed;left:50%;top:50%;width:
 #iletisim>div>div>div{gap:10px!important}
 #iletisim a{padding:11px 18px 11px 14px!important;font-size:14px!important;gap:10px!important}
 #iletisim a svg{width:19px!important;height:19px!important}
+}
+
+/* Freelance mobil sıkılaştırma */
+@media (max-width:759px){
+.f-hero-in>p{margin-top:18px!important}
+.f-hero-btns{margin-top:22px!important;gap:10px!important}
+.f-trust{margin-top:20px!important;gap:6px 16px!important;font-size:13px!important}
+#hizmetler,#isler,#surec,#sss{padding-top:52px!important;padding-bottom:52px!important}
+#hizmetler h2,#isler h2,#surec h2,#sss h2{font-size:28px!important}
+#hizmetler>div:first-child{margin-bottom:22px!important}
+#hizmetler article{padding:20px 18px!important;gap:12px!important}
+#hizmetler article h3{font-size:24px!important}
+#isler>div:first-child{margin-bottom:24px!important}
+#isler>div:last-child{gap:32px 20px!important}
+.f-dk>div{padding-top:44px!important;padding-bottom:44px!important}
+.f-care>div{gap:28px 40px!important}
+.f-care h2{font-size:28px!important}
+.f-care p{font-size:15px!important}
+.f-care>div>div:first-child{gap:16px!important}
+.f-care>div>div:last-child>div{padding:14px 0!important;gap:12px!important}
+.f-care>div>div:last-child>div>span:first-child{font-size:15px!important}
+.f-care>div>div:last-child>div>span:last-child{font-size:14px!important}
+.f-why>div{gap:20px 40px!important}
+.f-why-octo{width:min(50%,170px)!important}
+.f-why h2{font-size:30px!important;margin:10px 0 18px!important}
+.f-why>div>div:last-child>div{padding:14px 0!important}
+.f-why>div>div:last-child>div span:first-child+div span:first-child{font-size:17px!important}
+.f-why>div>div:last-child>div span:first-child+div span:last-child{font-size:14px!important}
+.f-cmp-sec h2{font-size:28px!important}
+.f-step{padding-bottom:20px!important}
+#sss>div:first-child{margin-bottom:24px!important}
 }

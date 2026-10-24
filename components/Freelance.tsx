@@ -96,7 +96,7 @@ export default function Freelance() {
   const lang = useLang();
   const t = useT(EN);
 
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
   const [name, setName] = useState('');
   const [biz, setBiz] = useState('');
   const [msg, setMsg] = useState('');
@@ -260,7 +260,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section style={{ background: 'var(--sbg)', color: '#fff' }}>
+      <section className="f-dk f-care" style={{ background: 'var(--sbg)', color: '#fff' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:48px 64px">
           <div style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', gap: 22 }}>
             <span style={{ fontSize: 14, color: '#AAA' }}>{t('02 / Bakım ve destek')}</span>
@@ -297,7 +297,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section style={{ background: 'var(--sbg)', color: '#fff', overflow: 'hidden' }}>
+      <section className="f-dk f-why" style={{ background: 'var(--sbg)', color: '#fff', overflow: 'hidden' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,96px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px">
           <div style={{ flex: '1 1 380px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -334,7 +334,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section style={{ background: 'var(--sbg)', color: '#fff' }}>
+      <section className="f-dk f-cmp-sec" style={{ background: 'var(--sbg)', color: '#fff' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,48px)">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 36 }}><span style={{ fontSize: 14, color: '#AAA' }}>{t('06 / Karşılaştırma')}</span><h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Klasik ajans ve 08dijital')}{O}</h2></div>
           <div style={{ overflowX: 'auto' }}><div className="f-cmp" style={{ minWidth: 560, display: 'grid', gridTemplateColumns: '0.8fr 1fr 1fr', fontSize: 15, borderTop: '1px solid #fff' }}>

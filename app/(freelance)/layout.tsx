@@ -4,9 +4,10 @@ import './freelance.css';
 import Intro from '@/components/Intro';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://erdemsensoy.vercel.app'),
   title: '08dijital — QR menü, web sitesi ve Instagram',
   description: 'Kafe, restoran ve küçük işletmeler için QR menü, web sitesi ve Instagram hizmeti. Tek kişiden, baştan sona.',
-  openGraph: { title: '08dijital — İşletmenin dijital yüzü', description: 'QR menü, işletme web sitesi ve Instagram aynı elden.', locale: 'tr_TR', type: 'website', images: ['/ahtapot.png'] },
+  openGraph: { title: '08dijital — İşletmenin dijital yüzü', description: 'QR menü, işletme web sitesi ve Instagram aynı elden.', locale: 'tr_TR', type: 'website' },
   icons: { icon: '/ahtapot.png' }
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };

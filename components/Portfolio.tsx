@@ -5,6 +5,7 @@ import { E } from './dc';
 import ImageSlot from './ImageSlot';
 import { Brand } from './Brand';
 import Burger from './Burger';
+import ThemeIcon from './ThemeIcon';
 import EN from '@/lib/en-portfolio.json';
 import { setLang, useLang, useT } from '@/lib/i18n';
 import { CV_URL, LIVE_LINKS } from '@/lib/links';
@@ -187,7 +188,7 @@ export default function Portfolio() {
             <E as="nav" st="display:flex;align-items:center;gap:10px 22px;flex-wrap:wrap;font-size:14px">
               {desktop && <><a href="#projeler">{t('Projeler')}</a><a href="#teknolojiler">{t('Teknolojiler')}</a><a href="#deneyim">{t('Deneyim')}</a><a href="#iletisim">{t('İletişim')}</a></>}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <E as="button" onClick={(e: React.MouseEvent) => doToggle(e)} title="Tema değiştir" data-magnetic="1" st="all:unset;cursor:pointer;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px" hv="border-color:var(--fg)">{theme === 'dark' ? '☀' : '☾'}</E>
+                <E as="button" onClick={(e: React.MouseEvent) => doToggle(e)} title="Tema değiştir" data-magnetic="1" st="all:unset;cursor:pointer;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px" hv="border-color:var(--fg)"><ThemeIcon dark={theme === 'dark'} /></E>
               </div>
               <span style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 13, letterSpacing: '0.04em' }}>
                 <E as="button" onClick={() => setLang('tr')} st={`all:unset;cursor:pointer;font-weight:${trActive ? 700 : 400};color:${trActive ? 'var(--fg)' : 'var(--mute)'}`}>TR</E>
@@ -284,7 +285,7 @@ export default function Portfolio() {
           <div style={{ borderTop: '2px solid var(--fg)', display: 'flex', flexDirection: 'column' }}>
             {exps.map(x => (
               <E key={x.title} data-reveal="0" st="display:flex;flex-wrap:wrap;gap:0 clamp(20px,4vw,56px)">
-                <E st="flex:0 0 180px;padding:24px 0 0;display:flex;flex-direction:column;gap:10px;align-items:flex-start"><span style={{ fontSize: 15, color: 'var(--mute)', lineHeight: 1.4 }}>{t(x.date)}</span>{x.now && <span style={{ fontSize: 12, fontWeight: 600, color: '#E35D17', border: '1px solid #E35D17', padding: '3px 10px', borderRadius: 999 }}>{t('Şu an')}</span>}</E>
+                <E st="flex:0 0 180px;padding:24px 0 0;display:flex;flex-direction:column;gap:10px;align-items:flex-start"><span style={{ fontSize: 15, color: 'var(--mute)', lineHeight: 1.4, textWrap: 'balance' }}>{t(x.date)}</span>{x.now && <span style={{ fontSize: 12, fontWeight: 600, color: '#E35D17', border: '1px solid #E35D17', padding: '3px 10px', borderRadius: 999 }}>{t('Şu an')}</span>}</E>
                 <E st="flex:1 1 320px;min-width:0;position:relative;padding:24px 0 24px clamp(24px,3vw,40px);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
                   <E as="span" st={x.now ? 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:#E35D17' : 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--mute);box-sizing:border-box'}></E>
                   <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--mute)' }}>{t(x.kind)}</span>
@@ -342,7 +343,7 @@ export default function Portfolio() {
           <E st="max-width:1280px;margin:0 auto;padding:clamp(48px,5vw,72px) clamp(20px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px">
             <span data-reveal="0" style={{ fontSize: 14, color: '#AAA' }}>{t('06 / İletişim')}</span>
             <h2 data-reveal="60" style={{ margin: 0, fontSize: 'clamp(40px,5.6vw,84px)', lineHeight: 0.95, letterSpacing: '-0.055em', fontWeight: 600 }}>{t('Birlikte çalışalım')}{O}</h2>
-            <p data-reveal="120" style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: '#BBB', maxWidth: '44ch' }}>{t('Tam zamanlı frontend pozisyonlarına açığım. En hızlı e-postadan ulaşırsın.')}</p>
+            <p data-reveal="120" style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: '#BBB', maxWidth: '44ch', textWrap: 'balance' }}>{t('Tam zamanlı frontend pozisyonlarına açığım. En hızlı e-postadan ulaşırsın.')}</p>
             <div data-reveal="180" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center', marginTop: 4 }}>
               <E as="a" href={CV_URL} data-magnetic="1" st="background:#E35D17;color:#fff;padding:18px 30px;font-weight:600;font-size:17px;border-radius:999px;white-space:nowrap" hv="background:#fff;color:#111">{t("CV'yi indir ↓")}</E>
               <E as="button" onClick={copyMail} data-magnetic="1" st="all:unset;cursor:pointer;border:1px solid #444;padding:17px 26px;font-weight:600;font-size:17px;border-radius:999px;white-space:nowrap" hv="border-color:#fff">{copied ? L('Kopyalandı ✓', 'Copied ✓') : L('E-postayı kopyala', 'Copy email')}</E>

@@ -5,6 +5,7 @@ import { E } from './dc';
 import ImageSlot from './ImageSlot';
 import { Brand } from './Brand';
 import Burger from './Burger';
+import ThemeIcon from './ThemeIcon';
 import EN from '@/lib/en-freelance.json';
 import { setLang, useLang, useT } from '@/lib/i18n';
 import { octoArrive, octoLeave, startMagnet, startReveal } from '@/lib/freelance-logic';
@@ -184,7 +185,7 @@ export default function Freelance() {
           <E as="nav" st="display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;font-size:14px">
             {desktop && <><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a></>}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <E as="button" onClick={(e: React.MouseEvent) => toggleTheme(theme, reduceRef.current, setTheme, e)} title="Tema değiştir" st="all:unset;cursor:pointer;width:36px;height:36px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff" hv="border-color:#fff">{theme === 'dark' ? '☀' : '☾'}</E>
+              <E as="button" onClick={(e: React.MouseEvent) => toggleTheme(theme, reduceRef.current, setTheme, e)} title="Tema değiştir" st="all:unset;cursor:pointer;width:36px;height:36px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff" hv="border-color:#fff"><ThemeIcon dark={theme === 'dark'} /></E>
             </div>
             <span style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 13, letterSpacing: '0.04em' }}>
               <E as="button" onClick={() => setLang('tr')} st={`all:unset;cursor:pointer;font-weight:${trActive ? 700 : 400};color:${trActive ? '#fff' : '#888'}`}>TR</E>
@@ -227,7 +228,7 @@ export default function Freelance() {
       <section id="hizmetler" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: 32 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <span style={{ fontSize: 14, color: '#777' }}>{t('01 / Hizmetler')}</span>
+            <span style={{ fontSize: 14, color: '#6B6B6B' }}>{t('01 / Hizmetler')}</span>
             <E as="h2" st={`${H2};max-width:20ch`}>{t('İşletmenin internette ihtiyacı olan her şey, tek kişiden.')}</E>
           </div>
           <E as="a" href="#iletisim" st="border:1px solid #CCC;padding:13px 20px;font-size:15px" hv="border-color:#111;color:#111">{t('Teklif al →')}</E>
@@ -242,7 +243,7 @@ export default function Freelance() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 15 }}>
                 {s.bullets.map(b => <span key={b} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>{DOT}{t(b)}</span>)}
               </div>
-              <E st="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;padding-top:16px;border-top:1px solid #E6E6E6;font-size:15px;margin-top:auto"><div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}><span style={{ fontSize: 13, color: '#777' }}>{t('Başlangıç')}</span><span style={{ fontSize: 22, fontWeight: 600, letterSpacing: '-0.03em' }}>{s.price}</span></div><div style={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'flex-end' }}><span style={{ fontSize: 13, color: '#777' }}>{t(s.days)}</span><a href="#iletisim" style={{ fontWeight: 600 }}>{t('Teklif al →')}</a></div></E>
+              <E st="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;padding-top:16px;border-top:1px solid #E6E6E6;font-size:15px;margin-top:auto"><div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}><span style={{ fontSize: 13, color: '#6B6B6B' }}>{t('Başlangıç')}</span><span style={{ fontSize: 22, fontWeight: 600, letterSpacing: '-0.03em' }}>{s.price}</span></div><div style={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'flex-end' }}><span style={{ fontSize: 13, color: '#6B6B6B' }}>{t(s.days)}</span><a href="#iletisim" style={{ fontWeight: 600 }}>{t('Teklif al →')}</a></div></E>
             </E>
           ))}
 
@@ -253,7 +254,7 @@ export default function Freelance() {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 28px', fontSize: 15, marginTop: 4 }}>
               {['Profil ve bio düzeni', 'Paylaşım ve hikâye tasarımları', 'Öne çıkanlar kapakları', 'Menü ve site linkleri'].map(b => <span key={b} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>{DOT}{t(b)}</span>)}
             </div>
-            <span style={{ fontSize: 15, color: '#777', marginTop: 6 }}>{t('Başlangıç')} <strong style={{ color: '#111', fontWeight: 600 }}>{t('aylık 2.000 TL')}</strong></span>
+            <span style={{ fontSize: 15, color: '#6B6B6B', marginTop: 6 }}>{t('Başlangıç')} <strong style={{ color: '#111', fontWeight: 600 }}>{t('aylık 2.000 TL')}</strong></span>
             <a href="#iletisim" style={{ fontWeight: 600, fontSize: 15 }}>{t('Teklif al →')}</a>
           </E>
         </div>
@@ -277,7 +278,7 @@ export default function Freelance() {
 
       <section id="isler" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 40 }}>
-          <span style={{ fontSize: 14, color: '#777' }}>{t('03 / Seçili işler')}</span>
+          <span style={{ fontSize: 14, color: '#6B6B6B' }}>{t('03 / Seçili işler')}</span>
           <E as="h2" st={`${H2};max-width:20ch`}>{t('Yayında olan işler.')}</E>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: '48px 28px' }}>
@@ -315,7 +316,7 @@ export default function Freelance() {
       <section id="surec" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,120px) clamp(20px,4vw,48px)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: 32 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <span style={{ fontSize: 14, color: '#777' }}>{t('05 / Süreç')}</span>
+            <span style={{ fontSize: 14, color: '#6B6B6B' }}>{t('05 / Süreç')}</span>
             <h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600, maxWidth: '18ch' }}>{t('Bir mesajla başlar, yayında biter')}{O}</h2>
           </div>
           <E as="a" href="#iletisim" st="background:#111;color:#fff;padding:14px 22px;font-weight:600;border-radius:999px" hv="background:#E35D17;color:#fff">{t('Konuşmaya başla')}</E>
@@ -352,7 +353,7 @@ export default function Freelance() {
 
       <section id="sss" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,120px) clamp(20px,4vw,48px) clamp(40px,5vw,64px)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14, marginBottom: 40 }}>
-          <span style={{ fontSize: 14, color: '#777' }}>{t('07 / Sık sorulanlar')}</span>
+          <span style={{ fontSize: 14, color: '#6B6B6B' }}>{t('07 / Sık sorulanlar')}</span>
           <h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Başlamadan önce bilmek istediklerin')}{O}</h2>
         </div>
         <div style={{ maxWidth: 860, margin: '0 auto', display: 'flex', flexDirection: 'column', borderTop: '1px solid #111' }}>
@@ -365,7 +366,7 @@ export default function Freelance() {
               </div>
             );
           })}
-          <span style={{ textAlign: 'center', fontSize: 14, color: '#777', marginTop: 16 }}>{t('Aklındaki soru burada yok mu?')} <a href={WA} target="_blank" style={{ color: '#111', fontWeight: 600 }}>{t("WhatsApp'tan sor →")}</a></span>
+          <span style={{ textAlign: 'center', fontSize: 14, color: '#6B6B6B', marginTop: 16 }}>{t('Aklındaki soru burada yok mu?')} <a href={WA} target="_blank" style={{ color: '#111', fontWeight: 600 }}>{t("WhatsApp'tan sor →")}</a></span>
         </div>
       </section>
 
@@ -393,7 +394,7 @@ export default function Freelance() {
           <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/ahtapot.png" alt="" style={{ width: 24, height: 24 }} />08dijital<span style={{ color: '#E35D17', marginLeft: -8 }}>.</span></span>
           <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', color: '#444' }}><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a><a href="https://instagram.com/08dijitalcom" target="_blank">Instagram</a><a href="/">{t('Portfolyo')}</a></nav>
         </E>
-        <div style={{ marginTop: 24, borderTop: '1px solid #E6E6E6', paddingTop: 16, display: 'flex', justifyContent: 'flex-end', gap: 16, flexWrap: 'wrap', fontSize: 13, color: '#777' }}><a href="#top">{t('Başa dön ↑')}</a></div>
+        <div style={{ marginTop: 24, borderTop: '1px solid #E6E6E6', paddingTop: 16, display: 'flex', justifyContent: 'flex-end', gap: 16, flexWrap: 'wrap', fontSize: 13, color: '#6B6B6B' }}><a href="#top">{t('Başa dön ↑')}</a></div>
         <div style={{ fontSize: 'clamp(48px,8vw,120px)', fontWeight: 800, letterSpacing: '-0.06em', lineHeight: 1, margin: 'clamp(12px,1.6vw,20px) 0 0', paddingBottom: 'clamp(20px,2.4vw,32px)', textAlign: 'center', whiteSpace: 'nowrap', color: '#111', userSelect: 'none' }}>08dijital<span style={{ color: '#E35D17' }}>.</span></div>
       </footer>
 

@@ -4,9 +4,10 @@ import './portfolio.css';
 import Intro from '@/components/Intro';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://erdemsensoy.vercel.app'),
   title: 'Erdem Şensoy — Frontend Developer',
   description: 'Erdem Şensoy, İstanbul merkezli frontend developer. Projeler, teknolojiler, deneyim ve CV.',
-  openGraph: { title: 'Erdem Şensoy — Frontend Developer', description: 'Fikirleri çalışan web ürünlerine dönüştürüyorum.', locale: 'tr_TR', type: 'website', images: ['/ahtapot.png'] },
+  openGraph: { title: 'Erdem Şensoy — Frontend Developer', description: 'Fikirleri çalışan web ürünlerine dönüştürüyorum.', locale: 'tr_TR', type: 'website' },
   icons: { icon: '/ahtapot.png' }
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };

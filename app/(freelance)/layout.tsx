@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { sans } from '@/lib/fonts';
 import './freelance.css';
+import Intro from '@/components/Intro';
 
 export const metadata: Metadata = {
   title: '08dijital — QR menü, web sitesi ve Instagram',
@@ -10,10 +11,13 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
 
+const introInit = `try{if(sessionStorage.getItem('octo-in')==='1'||sessionStorage.getItem('octo-out')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.intro='skip'}catch(e){}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={sans.variable}>
-      <body>{children}</body>
+    <html lang="tr" className={sans.variable} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: introInit }} /></head>
+      <body><Intro />{children}</body>
     </html>
   );
 }

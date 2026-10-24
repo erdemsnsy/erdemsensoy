@@ -1,0 +1,31 @@
+﻿.intro{position:fixed;inset:0;z-index:100000;background:#000;overflow:hidden;animation:in-out .6s ease 3.6s forwards}
+html[data-intro=skip] .intro{display:none}
+.intro.is-skip{animation:none!important;opacity:0;transition:opacity .35s;pointer-events:none}
+.intro-curtain{position:absolute;inset:0;background:var(--bg,#fff);clip-path:inset(100% 0 0 0);animation:in-curtain 1s cubic-bezier(.65,0,.35,1) 2.6s forwards}
+.intro-rope{--w:min(72vw,430px);position:absolute;left:50%;top:0;width:var(--w);margin-left:calc(var(--w)/-2);transform-origin:50% 0;display:flex;flex-direction:column;align-items:center;animation:in-rope 4.2s linear forwards}
+.intro-thread{width:1.5px;flex:none;background:#d4d4d4;height:calc(50vh - var(--w)*.38)}
+.intro-octo{position:relative;display:block;width:var(--w);height:auto;margin-top:calc(var(--w)*-.12);filter:drop-shadow(0 30px 60px rgba(227,93,23,.3));animation:in-wiggle 4.2s linear forwards;transform-origin:50% 12%}
+.intro-skip{all:unset;cursor:pointer;position:absolute;z-index:3;top:max(10px,env(safe-area-inset-top));right:10px;padding:14px 10px;font-size:11px;letter-spacing:.16em;color:#9a9a9a;font-family:var(--font-sans),'Schibsted Grotesk',Helvetica,Arial,sans-serif;opacity:0;animation:in-fade .5s ease .3s forwards}
+.intro-skip:hover{color:#E35D17}
+@keyframes in-fade{to{opacity:1}}
+@keyframes in-out{to{opacity:0;visibility:hidden}}
+@keyframes in-curtain{to{clip-path:inset(0 0 0 0)}}
+@keyframes in-rope{
+0%{transform:translateY(0) rotate(0)}
+6%{transform:translateY(0) rotate(1.4deg);animation-timing-function:ease-in-out}
+14%{transform:translateY(0) rotate(-1.2deg);animation-timing-function:ease-in-out}
+23.8%{transform:translateY(0) rotate(0);animation-timing-function:ease-in-out}
+47.6%{transform:translateY(-3vh) rotate(0);animation-timing-function:ease-in-out}
+62%{transform:translateY(2.6vh) scale(.95);animation-timing-function:ease-in-out}
+74%{transform:translateY(3vh) scale(.94);animation-timing-function:cubic-bezier(.55,0,.9,.5)}
+86%{transform:translateY(-135vh) scale(.94)}
+100%{transform:translateY(-135vh) scale(.94)}
+}
+@keyframes in-wiggle{
+0%,23.8%{transform:scale(1,1)}
+36%{transform:scale(.985,1.035)}
+47.6%{transform:scale(.97,1.06)}
+62%{transform:scale(1,1)}
+100%{transform:scale(1,1)}
+}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}

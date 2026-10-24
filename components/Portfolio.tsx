@@ -152,7 +152,10 @@ export default function Portfolio() {
     window.addEventListener('keydown', key);
     document.addEventListener('click', click);
     arriveFromAgency(th, rd);
-    const offs = [startHero(rd), startStack(rd), startReveal(rd), startMagnet(rd)];
+    const introOn = document.documentElement.dataset.intro !== 'skip' && !!document.querySelector('.intro');
+    let offHero = () => {};
+    const heroT = setTimeout(() => { offHero = startHero(rd); }, introOn ? 3300 : 0);
+    const offs = [() => { clearTimeout(heroT); offHero(); }, startStack(rd), startReveal(rd), startMagnet(rd)];
     if (matchMedia('(pointer: fine)').matches) offs.push(startCursor());
     return () => {
       window.removeEventListener('resize', rs); window.removeEventListener('keydown', key); document.removeEventListener('click', click);

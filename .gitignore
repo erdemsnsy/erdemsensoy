@@ -6,3 +6,5 @@ _extract
 *.zip
 
 .vercel
+*.mp4
+

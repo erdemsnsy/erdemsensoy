@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { sans, mono } from '@/lib/fonts';
 import './portfolio.css';
+import Intro from '@/components/Intro';
 
 export const metadata: Metadata = {
   title: 'Erdem Şensoy — Frontend Developer',
@@ -11,13 +12,13 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
 
 // Tema ilk boyamadan önce uygulanır (es-theme yoksa sistem tercihi)
-const themeInit = `try{var t=localStorage.getItem('es-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}`;
+const themeInit = `try{var t=localStorage.getItem('es-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}try{if(sessionStorage.getItem('octo-in')==='1'||sessionStorage.getItem('octo-out')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.intro='skip'}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeInit }} /></head>
-      <body>{children}</body>
+      <body><Intro />{children}</body>
     </html>
   );
 }

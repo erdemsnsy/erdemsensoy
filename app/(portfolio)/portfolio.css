@@ -14,8 +14,8 @@ a:hover{color:#E35D17}
 header>div{flex-wrap:nowrap!important;gap:12px!important;padding-top:10px!important;padding-bottom:10px!important}
 header nav{flex-wrap:nowrap!important;gap:10px 12px!important}
 header>div>a{white-space:nowrap;font-size:18px!important}
-.p-hero{height:auto!important;min-height:calc(100svh - var(--hdr,61px))!important}
-.p-hero-in{height:auto!important;min-height:calc(100svh - var(--hdr,61px))!important;gap:22px!important;padding-top:28px!important;padding-bottom:28px!important}
+.p-hero{height:auto!important;min-height:0!important}
+.p-hero-in{height:auto!important;min-height:0!important;justify-content:flex-start!important;gap:16px!important;padding-top:16px!important;padding-bottom:28px!important}
 .p-hero-name{flex:none!important;height:220px!important;min-height:0!important}
 .p-hero-btns{justify-content:stretch!important}
 .p-hero-btns a{flex:1 1 auto;text-align:center;padding-left:18px!important;padding-right:18px!important}

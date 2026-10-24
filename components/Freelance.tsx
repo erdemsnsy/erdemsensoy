@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { E } from './dc';
 import ImageSlot from './ImageSlot';
 import { Brand } from './Brand';
+import Burger from './Burger';
 import EN from '@/lib/en-freelance.json';
 import { setLang, useLang, useT } from '@/lib/i18n';
 import { octoArrive, octoLeave, startMagnet, startReveal } from '@/lib/freelance-logic';
@@ -26,8 +27,8 @@ const services: Service[] = [
   { kol: 'Kol 01', title: 'QR menü', text: 'Masadaki QR kodu okutan müşterin menünü telefonunda görür. Fiyat değişince baskı gerekmez.',
     bullets: ['Fotoğraflı, kategorili menü', 'Çoklu dil (TR / EN)', "WhatsApp'tan sipariş"], price: '4.000 TL', days: 'Teslim: 3–5 gün',
     media: (
-      <E st="aspect-ratio:16/10;background:#F2F2F0;position:relative;overflow:hidden;margin-bottom:8px">
-        <E st="position:absolute;top:20px;bottom:20px;left:50%;transform:translateX(-50%);aspect-ratio:9/19;contain:size;background:#111;border-radius:24px"><E st="position:absolute;inset:6px;border-radius:19px;overflow:hidden;background:#fff"><ImageSlot id="hizmet-qr" placeholder="Di Döner QR menü (mobil)" sizes="20vw" /></E></E>
+      <E className="f-qr" st="aspect-ratio:16/10;background:#F2F2F0;position:relative;overflow:hidden;margin-bottom:8px">
+        <E className="f-phone" st="position:absolute;top:20px;bottom:20px;left:50%;transform:translateX(-50%);aspect-ratio:9/19;contain:size;background:#111;border-radius:24px"><E st="position:absolute;inset:6px;border-radius:19px;overflow:hidden;background:#fff"><ImageSlot id="hizmet-qr" placeholder="Di Döner QR menü (mobil)" sizes="20vw" /></E></E>
       </E>
     ) },
   { kol: 'Kol 02', title: 'İşletme web sitesi', text: "Google'da bulunan, telefonda hızlı açılan, müşteriyi aramaya ya da yol tarifine yönlendiren bir site.",
@@ -104,6 +105,7 @@ export default function Freelance() {
   const [formOpen, setFormOpen] = useState(false);
   const [cta, setCta] = useState(false);
   const [desktop, setDesktop] = useState(true);
+  const [menu, setMenu] = useState(false);
   const formRef = useRef(formOpen);
   formRef.current = formOpen;
 
@@ -111,7 +113,7 @@ export default function Freelance() {
 
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const key = (e: KeyboardEvent) => { if (e.key === 'Escape') setFormOpen(false); };
+    const key = (e: KeyboardEvent) => { if (e.key === 'Escape') { setFormOpen(false); setMenu(false); } };
     const click = (e: MouseEvent) => {
       const tg = e.target as Element;
       const pf = tg.closest && tg.closest('a[href="/"]');
@@ -164,8 +166,8 @@ export default function Freelance() {
   const single = (arr: string[], cur: string, set: (v: string) => void) => arr.map(l => {
     const on = cur === l;
     return on
-      ? <E as="button" key={l} onClick={() => set('')} st="all:unset;cursor:pointer;padding:12px 16px;font-size:14px;background:#E35D17;color:#fff;border:1px solid #E35D17;border-radius:999px">{t(l)}</E>
-      : <E as="button" key={l} onClick={() => set(l)} st="all:unset;cursor:pointer;padding:12px 16px;font-size:14px;color:#fff;border:1px solid #444;border-radius:999px" hv="border-color:#fff">{t(l)}</E>;
+      ? <E as="button" className="f-chip" key={l} onClick={() => set('')} st="all:unset;cursor:pointer;padding:12px 16px;font-size:14px;background:#E35D17;color:#fff;border:1px solid #E35D17;border-radius:999px">{t(l)}</E>
+      : <E as="button" className="f-chip" key={l} onClick={() => set(l)} st="all:unset;cursor:pointer;padding:12px 16px;font-size:14px;color:#fff;border:1px solid #444;border-radius:999px" hv="border-color:#fff">{t(l)}</E>;
   });
 
   return (
@@ -181,19 +183,29 @@ export default function Freelance() {
               <span style={{ color: '#555' }}>/</span>
               <E as="button" onClick={() => setLang('en')} st={`all:unset;cursor:pointer;font-weight:${enActive ? 700 : 400};color:${enActive ? '#fff' : '#888'}`}>EN</E>
             </span>
-            <E as="a" href="#iletisim" st="background:#fff;color:#111;padding:10px 16px;font-weight:600;border-radius:999px;white-space:nowrap;flex:none" hv="background:#E35D17;color:#fff">{t('Projeni konuşalım')}</E>
+            {desktop
+              ? <E as="a" href="#iletisim" st="background:#fff;color:#111;padding:10px 16px;font-weight:600;border-radius:999px;white-space:nowrap;flex:none" hv="background:#E35D17;color:#fff">{t('Projeni konuşalım')}</E>
+              : <Burger open={menu} onClick={() => setMenu(m => !m)} label="Menü" color="#fff" border="#444" />}
           </E>
         </E>
+        {!desktop && menu && (
+          <E className="m-menu" onClick={() => setMenu(false)} st="position:absolute;top:100%;left:0;right:0;background:#0E0E0E;border-bottom:1px solid #2A2A2A;padding:4px clamp(20px,4vw,48px) 20px;display:flex;flex-direction:column;box-shadow:0 20px 40px rgba(0,0,0,.35)">
+            {[['#hizmetler', 'Hizmetler'], ['#surec', 'Süreç'], ['#isler', 'İşler'], ['#sss', 'SSS']].map(([h, l]) => (
+              <E as="a" key={h} href={h} st="font-size:24px;font-weight:600;letter-spacing:-0.03em;padding:15px 0;border-bottom:1px solid #2A2A2A">{t(l)}</E>
+            ))}
+            <E as="a" href="#iletisim" st="margin-top:18px;background:#E35D17;color:#fff;padding:16px 20px;font-weight:600;font-size:16px;border-radius:999px;text-align:center" hv="background:#fff;color:#111">{t('Projeni konuşalım')}</E>
+          </E>
+        )}
       </header>
 
       <section id="top" style={{ background: '#0E0E0E', color: '#fff', overflow: 'hidden', minHeight: 'calc(100svh - 61px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ position: 'relative', width: '100%', flex: 1, display: 'flex', alignItems: 'center' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/ahtapot.png" alt="08dijital maskotu turuncu ahtapot" style={{ position: 'absolute', right: 'clamp(-340px,-16vw,-90px)', bottom: 'clamp(-260px,-14vw,-80px)', width: 'clamp(420px,62vw,1040px)', height: 'auto', transform: 'rotate(-22deg)', transformOrigin: '60% 60%', animation: 'octo 7s ease-in-out infinite', filter: 'drop-shadow(0 40px 80px rgba(227,93,23,.25))', pointerEvents: 'none' }} />
-          <E st="position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(20px,4vw,48px);display:flex;flex-direction:column">
-            <h1 style={{ margin: 0, fontSize: 'clamp(42px,9.6vw,156px)', lineHeight: 0.94, letterSpacing: '-0.055em', fontWeight: 600 }}><span style={{ display: 'block', whiteSpace: 'nowrap' }}>{t('İşletmenin')}</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>{t('dijital yüzü')}{O}</span></h1>
+          <img className="f-octo" src="/ahtapot.png" alt="08dijital maskotu turuncu ahtapot" style={{ position: 'absolute', right: 'clamp(-340px,-16vw,-90px)', bottom: 'clamp(-260px,-14vw,-80px)', width: 'clamp(420px,62vw,1040px)', height: 'auto', transform: 'rotate(-22deg)', transformOrigin: '60% 60%', animation: 'octo 7s ease-in-out infinite', filter: 'drop-shadow(0 40px 80px rgba(227,93,23,.25))', pointerEvents: 'none' }} />
+          <E className="f-hero-in" st="position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(20px,4vw,48px);display:flex;flex-direction:column">
+            <h1 className="f-h1" style={{ margin: 0, fontSize: 'clamp(42px,9.6vw,156px)', lineHeight: 0.94, letterSpacing: '-0.055em', fontWeight: 600 }}><span style={{ display: 'block', whiteSpace: 'nowrap' }}>{t('İşletmenin')}</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>{t('dijital yüzü')}{O}</span></h1>
             <E as="p" st="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:#BBB;max-width:40ch;text-wrap:pretty">{t('Kafe, restoran ya da küçük bir dükkân: QR menünü, web siteni ve Instagram hesabını aynı elden hazırlıyorum. Tasarlar, yayına alır, sonrasında da güncel tutarım.')}</E>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 'clamp(32px,3.4vw,48px)' }}>
+            <div className="f-hero-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 'clamp(32px,3.4vw,48px)' }}>
               <E as="a" href="#iletisim" st="background:#E35D17;color:#fff;padding:16px 26px;font-weight:600;font-size:16px;border-radius:999px;white-space:nowrap;flex:none" hv="background:#fff;color:#111">{t('Projeni konuşalım')}</E>
               <E as="a" href="#hizmetler" st="border:1px solid #555;padding:15px 26px;font-weight:600;font-size:16px;border-radius:999px;white-space:nowrap;flex:none;background:rgba(14,14,14,.6)" hv="border-color:#fff;color:#fff">{t('Hizmetleri gör')}</E>
             </div>
@@ -391,7 +403,7 @@ export default function Freelance() {
               <h2 style={{ margin: 0, fontSize: 'clamp(40px,5.6vw,84px)', lineHeight: 0.95, letterSpacing: '-0.05em', fontWeight: 600 }}>{t('Biraz anlat, gerisini konuşalım')}{O}</h2>
               <p style={{ margin: 0, fontSize: 17, lineHeight: 1.55, color: '#BBB', maxWidth: '38ch' }}>{t("Gönder'e bastığında mesajın hazır şekilde WhatsApp'ta açılır. 24 saat içinde dönüş yaparım.")}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/ahtapot.png" alt="" style={{ width: 'clamp(160px,18vw,260px)', height: 'auto', transform: 'rotate(-10deg)', marginTop: 8 }} />
+              <img className="f-form-octo" src="/ahtapot.png" alt="" style={{ width: 'clamp(160px,18vw,260px)', height: 'auto', transform: 'rotate(-10deg)', marginTop: 8 }} />
             </div>
             {sent ? (
               <E st="flex:1.1 1 420px;display:flex;flex-direction:column;gap:20px;border-top:1px solid #fff;padding-top:32px">
@@ -416,8 +428,8 @@ export default function Freelance() {
                       const on = sel.includes(l);
                       const toggle = () => setSel(s => (on ? s.filter(x => x !== l) : [...s, l]));
                       return on
-                        ? <E as="button" key={l} onClick={toggle} st="all:unset;cursor:pointer;padding:11px 16px;font-size:15px;background:#E35D17;color:#fff;border:1px solid #E35D17;border-radius:999px">{t(l)}</E>
-                        : <E as="button" key={l} onClick={toggle} st="all:unset;cursor:pointer;padding:11px 16px;font-size:15px;color:#fff;border:1px solid #444;border-radius:999px" hv="border-color:#fff">{t(l)}</E>;
+                        ? <E as="button" className="f-chip" key={l} onClick={toggle} st="all:unset;cursor:pointer;padding:11px 16px;font-size:15px;background:#E35D17;color:#fff;border:1px solid #E35D17;border-radius:999px">{t(l)}</E>
+                        : <E as="button" className="f-chip" key={l} onClick={toggle} st="all:unset;cursor:pointer;padding:11px 16px;font-size:15px;color:#fff;border:1px solid #444;border-radius:999px" hv="border-color:#fff">{t(l)}</E>;
                     })}
                   </div>
                 </div>
@@ -432,7 +444,7 @@ export default function Freelance() {
                   </div>
                 </div>
                 <label style={{ display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: '#AAA' }}>{t('Kısaca anlat')}<E as="textarea" value={msg} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setMsg(e.target.value)} rows={4} placeholder={t('Ne yapmak istiyorsun? Varsa Instagram ya da site linkin…')} st="border:1px solid #444;padding:14px;font-size:17px;outline:none;resize:none;line-height:1.5;background:transparent;color:#fff" fc="border-color:#E35D17" /></label>
-                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+                <div className="f-send" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
                   <E as="a" href={waHref} target="_blank" onClick={markSent} st="background:#E35D17;color:#fff;padding:17px 26px;font-weight:600;font-size:17px;border-radius:999px" hv="background:#fff;color:#111">{t('WhatsApp ile gönder')}</E>
                   <E as="a" href={mailHref} onClick={markSent} st="border:1px solid #555;padding:16px 24px;font-weight:600;border-radius:999px" hv="border-color:#fff;color:#fff">{t('E-posta ile gönder')}</E>
                 </div>

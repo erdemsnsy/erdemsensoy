@@ -9,3 +9,17 @@ input::placeholder,textarea::placeholder{color:#888}
 @keyframes octo{0%,100%{transform:rotate(-22deg) translate(0,0)}50%{transform:rotate(-19deg) translate(-6px,-16px)}}
 @keyframes octo2{0%,100%{transform:translateX(-50%) rotate(8deg)}50%{transform:translateX(-50%) translateY(-10px) rotate(4deg)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Mobil (< 760px): masaüstü stillerine dokunmaz */
+@media (max-width:759px){
+header>div{flex-wrap:nowrap!important}
+header nav{flex-wrap:nowrap!important;gap:12px 14px!important}
+.f-hero-in{padding-top:36px!important;padding-bottom:300px!important}
+.f-h1{font-size:11.5vw!important}
+.f-hero-btns a{flex:1 1 auto!important;text-align:center}
+.f-octo{width:360px!important;right:-110px!important;bottom:-90px!important}
+.f-qr{aspect-ratio:1/1!important}
+.f-chip{min-height:44px;display:inline-flex!important;align-items:center}
+.f-send a{flex:1 1 100%;text-align:center}
+.f-form-octo{width:130px!important}
+}

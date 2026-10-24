@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { E } from './dc';
 import ImageSlot from './ImageSlot';
 import { Brand } from './Brand';
+import Burger from './Burger';
 import EN from '@/lib/en-portfolio.json';
 import { setLang, useLang, useT } from '@/lib/i18n';
 import { CV_URL, LIVE_LINKS } from '@/lib/links';
@@ -79,6 +80,7 @@ export default function Portfolio() {
   const [copied, setCopied] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
   const [desktop, setDesktop] = useState(true);
+  const [menu, setMenu] = useState(false);
   const reduce = useRef(false);
   const copyT = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -132,7 +134,7 @@ export default function Portfolio() {
 
     const key = (e: KeyboardEvent) => onKey(e, live.current, live.current.list, {
       togglePal: () => { setPal(p => !p); setQ(''); setIdx(0); },
-      close: () => { setPal(false); setCode(false); },
+      close: () => { setPal(false); setCode(false); setMenu(false); },
       setIdx,
       closePal: () => setPal(false)
     });
@@ -189,24 +191,34 @@ export default function Portfolio() {
                 <span style={{ color: 'var(--mute)' }}>/</span>
                 <E as="button" onClick={() => setLang('en')} st={`all:unset;cursor:pointer;font-weight:${enActive ? 700 : 400};color:${enActive ? 'var(--fg)' : 'var(--mute)'}`}>EN</E>
               </span>
-              <E as="a" href="/freelance" data-magnetic="1" st="background:var(--fg);color:var(--bg);padding:10px 16px;font-weight:600;border-radius:999px;white-space:nowrap" hv="background:#E35D17;color:#fff">08dijital →</E>
+              {desktop
+                ? <E as="a" href="/freelance" data-magnetic="1" st="background:var(--fg);color:var(--bg);padding:10px 16px;font-weight:600;border-radius:999px;white-space:nowrap" hv="background:#E35D17;color:#fff">08dijital →</E>
+                : <Burger open={menu} onClick={() => setMenu(m => !m)} label="Menü" color="var(--fg)" border="var(--line)" />}
             </E>
           </E>
+          {!desktop && menu && (
+            <E className="m-menu" onClick={() => setMenu(false)} st="position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:4px clamp(20px,4vw,48px) 20px;display:flex;flex-direction:column;box-shadow:0 20px 40px rgba(0,0,0,.12)">
+              {[['#projeler', 'Projeler'], ['#teknolojiler', 'Teknolojiler'], ['#deneyim', 'Deneyim'], ['#iletisim', 'İletişim']].map(([h, l]) => (
+                <E as="a" key={h} href={h} st="font-size:24px;font-weight:600;letter-spacing:-0.03em;padding:15px 0;border-bottom:1px solid var(--line)">{t(l)}</E>
+              ))}
+              <E as="a" href="/freelance" st="margin-top:18px;background:var(--fg);color:var(--bg);padding:16px 20px;font-weight:600;font-size:16px;border-radius:999px;text-align:center" hv="background:#E35D17;color:#fff">08dijital →</E>
+            </E>
+          )}
         </header>
 
-        <section id="top" style={{ position: 'relative', height: 'calc(100svh - var(--hdr, 61px))', minHeight: 520, overflow: 'hidden', background: 'var(--bg)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <section id="top" className="p-hero" style={{ position: 'relative', height: 'calc(100svh - var(--hdr, 61px))', minHeight: 520, overflow: 'hidden', background: 'var(--bg)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <h1 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)', margin: 0 }}>Erdem Şensoy, Frontend Developer</h1>
           <canvas id="hero-canvas" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block', touchAction: 'pan-y' }}></canvas>
-          <E st="position:relative;width:100%;height:100%;max-width:1280px;margin:0 auto;padding:clamp(24px,3.4vw,48px) clamp(20px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,2.6vw,36px);pointer-events:none">
+          <E className="p-hero-in" st="position:relative;width:100%;height:100%;max-width:1280px;margin:0 auto;padding:clamp(24px,3.4vw,48px) clamp(20px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,2.6vw,36px);pointer-events:none">
             <E st="display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;font-size:14px;color:var(--mute)">
               <span>{t('Frontend Developer · İstanbul')}</span>
             </E>
-            <div id="hero-name" style={{ width: '100%', flex: '1 1 0', minHeight: 110, maxHeight: 470 }}></div>
+            <div id="hero-name" className="p-hero-name" style={{ width: '100%', flex: '1 1 0', minHeight: 110, maxHeight: 470 }}></div>
             <E st="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px 48px;align-items:end;border-top:1px solid var(--line);padding-top:clamp(20px,2.4vw,32px);pointer-events:auto">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <E as="p" st="margin:0;font-size:clamp(22px,2.4vw,34px);line-height:1.15;letter-spacing:-0.035em;font-weight:500;max-width:22ch;text-wrap:balance">{t('Fikirleri çalışan web ürünlerine dönüştürüyorum')}{O}</E>
               </div>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+              <div className="p-hero-btns" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                 <E as="a" href="#projeler" data-magnetic="1" st="background:#E35D17;color:#fff;padding:16px 26px;font-weight:600;font-size:16px;border-radius:999px;white-space:nowrap" hv="background:var(--fg);color:var(--bg)">{t('Projeleri gör ↓')}</E>
                 <E as="a" href={CV_URL} data-magnetic="1" st="border:1px solid var(--line);padding:15px 26px;font-weight:600;font-size:16px;border-radius:999px;white-space:nowrap;background:var(--bg)" hv="border-color:var(--fg);color:var(--fg)">{t("CV'yi indir")}</E>
               </div>

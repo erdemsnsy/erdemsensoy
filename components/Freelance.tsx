@@ -8,6 +8,7 @@ import Burger from './Burger';
 import EN from '@/lib/en-freelance.json';
 import { setLang, useLang, useT } from '@/lib/i18n';
 import { octoArrive, octoLeave, startMagnet, startReveal } from '@/lib/freelance-logic';
+import { toggleTheme } from '@/lib/portfolio-logic';
 
 const WA = 'https://wa.me/905468650875';
 const O = <span style={{ color: '#E35D17' }}>.</span>;
@@ -106,6 +107,8 @@ export default function Freelance() {
   const [cta, setCta] = useState(false);
   const [desktop, setDesktop] = useState(true);
   const [menu, setMenu] = useState(false);
+  const [theme, setTheme] = useState('light');
+  const reduceRef = useRef(false);
   const formRef = useRef(formOpen);
   formRef.current = formOpen;
 
@@ -113,6 +116,8 @@ export default function Freelance() {
 
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    reduceRef.current = reduce;
+    setTheme(document.documentElement.dataset.theme || 'light');
     const key = (e: KeyboardEvent) => { if (e.key === 'Escape') { setFormOpen(false); setMenu(false); } };
     const click = (e: MouseEvent) => {
       const tg = e.target as Element;
@@ -171,13 +176,16 @@ export default function Freelance() {
   });
 
   return (
-    <div style={{ minHeight: '100vh', background: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
 
       <header style={{ position: 'sticky', top: 0, zIndex: 20, background: '#0E0E0E', color: '#fff', borderBottom: '1px solid #2A2A2A' }}>
         <E st="max-width:1280px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
           <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10, fontWeight: 800, fontSize: 19, letterSpacing: '-0.03em' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/ahtapot.png" alt="" style={{ width: 28, height: 28 }} /><span>08dijital<span style={{ color: '#E35D17' }}>.</span></span></a>
           <E as="nav" st="display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;font-size:14px">
             {desktop && <><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a></>}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <E as="button" onClick={(e: React.MouseEvent) => toggleTheme(theme, reduceRef.current, setTheme, e)} title="Tema değiştir" st="all:unset;cursor:pointer;width:36px;height:36px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff" hv="border-color:#fff">{theme === 'dark' ? '☀' : '☾'}</E>
+            </div>
             <span style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 13, letterSpacing: '0.04em' }}>
               <E as="button" onClick={() => setLang('tr')} st={`all:unset;cursor:pointer;font-weight:${trActive ? 700 : 400};color:${trActive ? '#fff' : '#888'}`}>TR</E>
               <span style={{ color: '#555' }}>/</span>
@@ -216,7 +224,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section id="hizmetler" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)' }}>
+      <section id="hizmetler" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: 32 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <span style={{ fontSize: 14, color: '#777' }}>{t('01 / Hizmetler')}</span>
@@ -251,7 +259,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section style={{ background: '#0E0E0E', color: '#fff' }}>
+      <section style={{ background: 'var(--sbg)', color: '#fff' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,112px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:48px 64px">
           <div style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', gap: 22 }}>
             <span style={{ fontSize: 14, color: '#AAA' }}>{t('02 / Bakım ve destek')}</span>
@@ -267,7 +275,7 @@ export default function Freelance() {
         </E>
       </section>
 
-      <section id="isler" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)' }}>
+      <section id="isler" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,128px) clamp(20px,4vw,48px)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 40 }}>
           <span style={{ fontSize: 14, color: '#777' }}>{t('03 / Seçili işler')}</span>
           <E as="h2" st={`${H2};max-width:20ch`}>{t('Yayında olan işler.')}</E>
@@ -288,7 +296,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section style={{ background: '#0E0E0E', color: '#fff', overflow: 'hidden' }}>
+      <section style={{ background: 'var(--sbg)', color: '#fff', overflow: 'hidden' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,96px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px">
           <div style={{ flex: '1 1 380px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -304,7 +312,7 @@ export default function Freelance() {
         </E>
       </section>
 
-      <section id="surec" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,120px) clamp(20px,4vw,48px)' }}>
+      <section id="surec" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,120px) clamp(20px,4vw,48px)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: 32 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <span style={{ fontSize: 14, color: '#777' }}>{t('05 / Süreç')}</span>
@@ -325,7 +333,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section style={{ background: '#0E0E0E', color: '#fff' }}>
+      <section style={{ background: 'var(--sbg)', color: '#fff' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,48px)">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 36 }}><span style={{ fontSize: 14, color: '#AAA' }}>{t('06 / Karşılaştırma')}</span><h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Klasik ajans ve 08dijital')}{O}</h2></div>
           <div style={{ overflowX: 'auto' }}><div className="f-cmp" style={{ minWidth: 560, display: 'grid', gridTemplateColumns: '0.8fr 1fr 1fr', fontSize: 15, borderTop: '1px solid #fff' }}>
@@ -342,7 +350,7 @@ export default function Freelance() {
         </E>
       </section>
 
-      <section id="sss" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,120px) clamp(20px,4vw,48px) clamp(40px,5vw,64px)' }}>
+      <section id="sss" className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(72px,9vw,120px) clamp(20px,4vw,48px) clamp(40px,5vw,64px)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14, marginBottom: 40 }}>
           <span style={{ fontSize: 14, color: '#777' }}>{t('07 / Sık sorulanlar')}</span>
           <h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Başlamadan önce bilmek istediklerin')}{O}</h2>
@@ -361,7 +369,7 @@ export default function Freelance() {
         </div>
       </section>
 
-      <section id="iletisim" style={{ background: '#0E0E0E', color: '#fff', position: 'relative', marginTop: 'clamp(110px,12vw,150px)' }}>
+      <section id="iletisim" style={{ background: 'var(--sbg)', color: '#fff', position: 'relative', marginTop: 'clamp(110px,12vw,150px)' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/ahtapot.png" alt="" style={{ position: 'absolute', top: 'clamp(-130px,-10vw,-90px)', left: '50%', transform: 'translateX(-50%) rotate(8deg)', width: 'clamp(170px,17vw,240px)', height: 'auto', pointerEvents: 'none', animation: 'octo2 6s ease-in-out infinite' }} />
         <E st="max-width:1280px;margin:0 auto;padding:clamp(120px,12vw,160px) clamp(20px,4vw,48px) clamp(64px,7vw,96px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px">
@@ -380,7 +388,7 @@ export default function Freelance() {
         </E>
       </section>
 
-      <footer style={{ maxWidth: 1280, margin: '0 auto', padding: '28px clamp(20px,4vw,48px) 0', overflow: 'hidden' }}>
+      <footer className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: '28px clamp(20px,4vw,48px) 0', overflow: 'hidden' }}>
         <E st="display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap;font-size:14px">
           <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/ahtapot.png" alt="" style={{ width: 24, height: 24 }} />08dijital<span style={{ color: '#E35D17', marginLeft: -8 }}>.</span></span>
           <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', color: '#444' }}><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a><a href="https://instagram.com/08dijitalcom" target="_blank">Instagram</a><a href="/">{t('Portfolyo')}</a></nav>

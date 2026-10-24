@@ -10,7 +10,7 @@ export default function ImageSlot({ id, placeholder, sizes = '(max-width: 760px)
     <div style={{ display: 'block', position: 'absolute', inset: 0, width: '100%', height: '100%', font: '13px/1.3 system-ui,-apple-system,sans-serif' }}>
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', background: 'rgba(127,127,127,.08)' }}>
         {!failed && (
-          <Image src={`/images/${id}.jpg`} alt={placeholder} fill sizes={sizes} onError={() => setFailed(true)} style={{ objectFit: 'cover' }} />
+          <Image src={`/images/${id}.jpg`} alt={placeholder} fill sizes={sizes} onError={() => setFailed(true)} className="slot-img" style={{ objectFit: 'cover' }} />
         )}
       </div>
       {failed && (

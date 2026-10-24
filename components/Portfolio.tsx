@@ -154,7 +154,7 @@ export default function Portfolio() {
     arriveFromAgency(th, rd);
     const introOn = document.documentElement.dataset.intro !== 'skip' && !!document.querySelector('.intro');
     let offHero = () => {};
-    const heroT = setTimeout(() => { offHero = startHero(rd); }, introOn ? 3300 : 0);
+    const heroT = setTimeout(() => { offHero = startHero(rd); }, introOn ? 2200 : 0);
     const offs = [() => { clearTimeout(heroT); offHero(); }, startStack(rd), startReveal(rd), startMagnet(rd)];
     if (matchMedia('(pointer: fine)').matches) offs.push(startCursor());
     return () => {

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { useEffect, useState } from 'react';
 import { useLang } from '@/lib/i18n';
 import './intro.css';
@@ -13,7 +13,7 @@ export default function Intro() {
   useEffect(() => {
     if (document.documentElement.dataset.intro === 'skip') { setDone(true); return; }
     document.body.style.overflow = 'hidden';
-    const end = setTimeout(() => setDone(true), 4400);
+    const end = setTimeout(() => setDone(true), 3000);
     return () => { clearTimeout(end); document.body.style.overflow = ''; };
   }, []);
 

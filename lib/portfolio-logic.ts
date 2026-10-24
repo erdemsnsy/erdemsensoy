@@ -16,15 +16,15 @@ export function octoTransition(href: string, cx: number, cy: number, reduce: boo
   Object.assign(img.style, { position: 'fixed', left: '50%', top: '50%', width: 'min(64vw, 640px)', height: 'auto', zIndex: '10001', pointerEvents: 'none', filter: 'drop-shadow(0 40px 80px rgba(227,93,23,.35))', transform: 'translate(-50%,-50%) translate(-70vw, 80vh) rotate(-50deg) scale(.35)' });
   document.body.append(ov, img);
   const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-  ov.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] }, { duration: 650, easing: 'cubic-bezier(.7,0,.3,1)', fill: 'forwards' });
+  ov.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] }, { duration: 450, easing: 'cubic-bezier(.7,0,.3,1)', fill: 'forwards' });
   img.animate([
     { transform: 'translate(-50%,-50%) translate(-70vw, 80vh) rotate(-50deg) scale(.35)' },
     { transform: 'translate(-50%,-50%) translate(4vw, -6vh) rotate(-8deg) scale(1.02)', offset: 0.6 },
     { transform: 'translate(-50%,-50%) translate(0, -2vh) rotate(4deg) scale(1)', offset: 0.82 },
     { transform: 'translate(-50%,-50%) translate(0, 0) rotate(0deg) scale(1)' }
-  ], { duration: 1150, delay: 150, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+  ], { duration: 800, delay: 100, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
   try { sessionStorage.setItem('octo-in', '1'); } catch (e) {}
-  setTimeout(() => { go(href); }, 1350);
+  setTimeout(() => { go(href); }, 950);
 }
 
 export function arriveFromAgency(theme: string, reduce: boolean) {

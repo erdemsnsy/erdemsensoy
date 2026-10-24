@@ -38,8 +38,8 @@ export function octoArrive(reduce: boolean) {
     { transform: 'translate(-50%,-50%) rotate(0deg) scale(1)' },
     { transform: 'translate(-50%,-50%) translate(0, 3vh) rotate(-6deg) scale(.96)', offset: 0.25 },
     { transform: 'translate(-50%,-50%) translate(70vw, -90vh) rotate(35deg) scale(.5)' }
-  ], { duration: 1000, delay: 200, easing: 'cubic-bezier(.5,0,.2,1)', fill: 'forwards' });
-  ov.animate({ opacity: [1, 0] }, { duration: 600, delay: 650, easing: 'ease-out', fill: 'forwards' })
+  ], { duration: 700, delay: 100, easing: 'cubic-bezier(.5,0,.2,1)', fill: 'forwards' });
+  ov.animate({ opacity: [1, 0] }, { duration: 400, delay: 450, easing: 'ease-out', fill: 'forwards' })
     .onfinish = () => { ov.remove(); img.remove(); };
 }
 

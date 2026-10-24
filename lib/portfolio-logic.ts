@@ -3,6 +3,11 @@
 
 export const OCTO = '/ahtapot.png';
 
+// Geri tuşuyla (bfcache) dönülürse takılı kalan geçiş örtülerini temizler
+export function guardBfcache() {
+  window.addEventListener('pageshow', e => { if (e.persisted) document.querySelectorAll('[data-octo-ov]').forEach(n => n.remove()); }, { once: true });
+}
+
 export type PalItem = { label: string; hint: string; run: () => void };
 
 // 08dijital'e geçiş: ekran kararırken ahtapot köşeden süzülerek gelir
@@ -14,6 +19,7 @@ export function octoTransition(href: string, cx: number, cy: number, reduce: boo
   const img = document.createElement('img');
   img.src = OCTO; img.alt = '';
   Object.assign(img.style, { position: 'fixed', left: '50%', top: '50%', width: 'min(64vw, 640px)', height: 'auto', zIndex: '10001', pointerEvents: 'none', filter: 'drop-shadow(0 40px 80px rgba(227,93,23,.35))', transform: 'translate(-50%,-50%) translate(-70vw, 80vh) rotate(-50deg) scale(.35)' });
+  ov.dataset.octoOv = '1'; img.dataset.octoOv = '1'; guardBfcache();
   document.body.append(ov, img);
   const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
   ov.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] }, { duration: 450, easing: 'cubic-bezier(.7,0,.3,1)', fill: 'forwards' });
@@ -30,10 +36,11 @@ export function octoTransition(href: string, cx: number, cy: number, reduce: boo
 export function arriveFromAgency(theme: string, reduce: boolean) {
   let on = false;
   try { on = sessionStorage.getItem('octo-out') === '1'; sessionStorage.removeItem('octo-out'); } catch (e) {}
-  if (!on || reduce || !document.body.animate) return;
+  if (!on || reduce || !document.body.animate) { document.documentElement.removeAttribute('data-octo'); return; }
   const ov = document.createElement('div');
   Object.assign(ov.style, { position: 'fixed', inset: '0', zIndex: '10000', background: theme === 'dark' ? '#0E0E0E' : '#FAFAF8', pointerEvents: 'none' });
   document.body.append(ov);
+  document.documentElement.removeAttribute('data-octo'); // CSS örtüsünün yerini bu örtü aldı
   ov.animate({ clipPath: ['circle(150% at 50% 50%)', 'circle(0% at 50% 50%)'] }, { duration: 750, delay: 100, easing: 'cubic-bezier(.7,0,.3,1)', fill: 'forwards' })
     .onfinish = () => ov.remove();
 }

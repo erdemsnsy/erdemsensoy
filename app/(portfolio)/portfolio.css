@@ -27,3 +27,7 @@ header>div>a{white-space:nowrap;font-size:18px!important}
 .p-card h3{font-size:34px!important}
 .p-slot{min-height:140px!important}
 }
+
+/* Freelance'tan dönüşte JS örtüsü devralana kadar ekranı kapalı tut */
+html[data-octo=out] body::before{content:'';position:fixed;inset:0;background:var(--bg);z-index:9999;animation:octo-fail 0s 4s forwards}
+@keyframes octo-fail{to{visibility:hidden}}

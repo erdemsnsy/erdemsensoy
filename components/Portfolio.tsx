@@ -21,7 +21,7 @@ const GH = 'https://github.com/erdemsnsy';
 const techs: [string, string][] = [['React', 'fe'], ['Next.js', 'fe'], ['TypeScript', 'fe'], ['JavaScript', 'fe'], ['Tailwind CSS', 'fe'], ['HTML / CSS', 'fe'], ['Node.js', 'be'], ['Express', 'be'], ['Supabase', 'veri'], ['SQLite', 'veri'], ['SQL', 'veri'], ['Git', 'araç'], ['GitHub', 'araç'], ['Vercel', 'yayın']];
 
 type Project = {
-  num: string; title: string; titleSize: string; desc: string; stack: string[]; live: string; slot: string; slotPh: string; top: number;
+  num: string; title: string; titleSize: string; desc: string; stack: string[]; live: string; slot: string; slotPh: string; top: number; repo?: string;
   rows?: [string, string][];
 };
 const projects: Project[] = [
@@ -29,11 +29,11 @@ const projects: Project[] = [
     desc: 'Kaçırılan günde seriyi sıfırlamak yerine bekleten bir alışkanlık takip uygulaması. Cihazlar arası gerçek zamanlı eşitleme, arkadaşlarla ortak seri ve site kapalıyken çalışan bildirimler sunar.',
     stack: ['Next.js', 'TypeScript', 'Supabase'],
     rows: [['Problem', 'Klasik takip uygulamaları tek bir kaçırılan günde bütün seriyi sıfırlıyor.'], ['Çözüm', 'Seriyi sıfırlamak yerine bekleten bir sistem ve arkadaşlarla ortak seri.'], ['Teknik', 'Supabase ile cihazlar arası gerçek zamanlı eşitleme, site kapalıyken çalışan bildirimler.']] },
-  { num: '02', title: 'Kodfolyo', titleSize: 'clamp(36px,4.2vw,64px)', top: 102, live: LIVE_LINKS.kodfolyo, slot: 'v2-proje-2', slotPh: 'Kodfolyo ekran görüntüsü',
+  { num: '02', title: 'Kodfolyo', titleSize: 'clamp(36px,4.2vw,64px)', top: 102, live: LIVE_LINKS.kodfolyo, repo: 'https://github.com/erdemsnsy/kodfolyo', slot: 'v2-proje-2', slotPh: 'Kodfolyo ekran görüntüsü',
     desc: 'GitHub verilerini otomatik olarak kişisel geliştirici portfolyosuna dönüştüren web uygulaması. AI destekli biyografi oluşturma ve tema özelleştirme sunar.', stack: ['Next.js', 'TypeScript', 'Supabase'] },
-  { num: '03', title: 'Kâr Fişi', titleSize: 'clamp(36px,4.2vw,64px)', top: 116, live: LIVE_LINKS.karfisi, slot: 'v2-proje-3', slotPh: 'Kâr Fişi ekran görüntüsü',
+  { num: '03', title: 'Kâr Fişi', titleSize: 'clamp(36px,4.2vw,64px)', top: 116, live: LIVE_LINKS.karfisi, repo: 'https://github.com/erdemsnsy/karfisi', slot: 'v2-proje-3', slotPh: 'Kâr Fişi ekran görüntüsü',
     desc: 'E-ticaret satıcıları için net kâr ve kâr marjı hesaplayan finansal analiz uygulaması. Hedef fiyat önerisi ve toplu Excel analizi sunar.', stack: ['Node.js', 'Express', 'SQLite'] },
-  { num: '04', title: 'Şensoy Hukuk ve Danışmanlık', titleSize: 'clamp(34px,3.8vw,56px)', top: 130, live: LIVE_LINKS.sensoyhukuk, slot: 'v2-proje-4', slotPh: 'Şensoy Hukuk ekran görüntüsü',
+  { num: '04', title: 'Şensoy Hukuk ve Danışmanlık', titleSize: 'clamp(34px,3.8vw,56px)', top: 130, live: LIVE_LINKS.sensoyhukuk, repo: 'https://github.com/erdemsnsy/hukukvedanismanlik', slot: 'v2-proje-4', slotPh: 'Şensoy Hukuk ekran görüntüsü',
     desc: 'Hukuk büroları için makale yönetimi, hukuki hesaplama araçları ve dilekçe oluşturma modülleri içeren responsive web uygulaması.', stack: ['JavaScript', 'HTML', 'CSS'] }
 ];
 
@@ -44,7 +44,7 @@ const exps: Exp[] = [
   { date: 'Tem 2026 — Ağu 2026', now: false, kind: 'Staj', title: 'Teknik Destek Stajyeri', org: 'CoreX Holding BV · İstanbul',
     text: 'Son kullanıcılara donanım, ağ ve çevre birimi arızalarında birinci seviye teknik destek sağladım. Kurumsal cihazlarda işletim sistemi kurulumu ve kullanıcı hazırlığı, BT envanter sayımı, asset tag kontrolü ve zimmet dokümantasyonunu yürüttüm.' },
   { date: 'Eyl 2024 — Devam ediyor', now: true, kind: 'Eğitim', title: 'Ön Lisans · Bilgisayar Programcılığı', org: 'Kastamonu Üniversitesi · Kastamonu',
-    text: "Mezuniyetime yalnızca bir sınav kaldı. Okulda öğrendiklerimi kendi projelerimde ve 08dijital'de gerçek müşterilerle uyguluyorum." }
+    text: "Beklenen mezuniyet: 2027. Okulda öğrendiklerimi kendi projelerimde ve 08dijital'de gerçek müşterilerle uyguluyorum." }
 ];
 
 const approach: [string, string, string, string][] = [
@@ -254,7 +254,7 @@ export default function Portfolio() {
                       )}
                       <E st={`display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap${p.rows ? '' : ';border-top:1px solid var(--line);padding-top:16px'}`}>
                         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', fontSize: 13 }}>{p.stack.map(s => <E as="span" key={s} st={chipSt}>{s}</E>)}</div>
-                        <div style={{ display: 'flex', gap: 18, fontWeight: 600, fontSize: 15 }}><a href={p.live}>{t('Canlı site ↗')}</a><a href={GH} target="_blank">{t('Kaynak kod ↗')}</a></div>
+                        <div style={{ display: 'flex', gap: 18, fontWeight: 600, fontSize: 15 }}><a href={p.live}>{t('Canlı site ↗')}</a>{p.repo && <a href={p.repo} target="_blank">{t('Kaynak kod ↗')}</a>}</div>
                       </E>
                     </div>
                   </div>

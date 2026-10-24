@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLang } from '@/lib/i18n';
 import './intro.css';
 
-// Site her açıldığında oynayan tanıtım: ipten sarkan ahtapot, alttan yükselen perde, "tanıtımı geç".
+// Oturum başına bir kez oynayan tanıtım: ipten sarkan ahtapot, alttan yükselen perde, "tanıtımı geç".
 // Ahtapot geçişlerinden (octo-in / octo-out) gelindiğinde ve reduced-motion'da atlanır (layout'taki head script'i).
 export default function Intro() {
   const lang = useLang();
@@ -12,6 +12,7 @@ export default function Intro() {
 
   useEffect(() => {
     if (document.documentElement.dataset.intro === 'skip') { setDone(true); return; }
+    try { sessionStorage.setItem('intro-seen', '1'); } catch (e) {}
     document.body.style.overflow = 'hidden';
     const end = setTimeout(() => setDone(true), 3000);
     return () => { clearTimeout(end); document.body.style.overflow = ''; };

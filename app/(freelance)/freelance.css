@@ -39,3 +39,8 @@ header nav{flex-wrap:nowrap!important;gap:12px 14px!important}
 html[data-theme=dark] .lt{filter:invert(1) hue-rotate(180deg)}
 html[data-theme=dark] .lt .slot-img{filter:invert(1) hue-rotate(180deg)}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+
+/* Portfolyodan geçişte JS örtüsü ve ahtapot devralana kadar ekranı kapalı tut (geçişin bittiği kareyle birebir aynı) */
+html[data-octo=in] body::before{content:'';position:fixed;inset:0;background:#0E0E0E;z-index:9999;animation:octo-fail 0s 4s forwards}
+html[data-octo=in] body::after{content:'';position:fixed;left:50%;top:50%;width:min(64vw,640px);aspect-ratio:1/1;transform:translate(-50%,-50%);background:url(/ahtapot.png) center/contain no-repeat;filter:drop-shadow(0 40px 80px rgba(227,93,23,.35));z-index:10001;pointer-events:none;animation:octo-fail 0s 4s forwards}
+@keyframes octo-fail{to{visibility:hidden}}

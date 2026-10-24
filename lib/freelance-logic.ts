@@ -1,5 +1,5 @@
 // 08dijital etkileşim mantığı. Prototipteki (Freelance.dc.html) sınıf yöntemlerinin birebir taşınmış hali.
-import { OCTO } from './portfolio-logic';
+import { OCTO, guardBfcache } from './portfolio-logic';
 
 // Portfolyo'ya dönüş: ahtapot tıklanan noktada küçükten büyüyüp yukarı uçar
 export function octoLeave(href: string, cx: number, cy: number, reduce: boolean, go: (href: string) => void) {
@@ -12,6 +12,7 @@ export function octoLeave(href: string, cx: number, cy: number, reduce: boolean,
   const img = document.createElement('img');
   img.src = OCTO; img.alt = '';
   Object.assign(img.style, { position: 'fixed', left: x + 'px', top: y + 'px', width: '220px', height: 'auto', zIndex: '10001', pointerEvents: 'none', transform: 'translate(-50%,-50%) scale(.2)' });
+  ov.dataset.octoOv = '1'; img.dataset.octoOv = '1'; guardBfcache();
   document.body.append(ov, img);
   const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
   img.animate([
@@ -27,13 +28,14 @@ export function octoLeave(href: string, cx: number, cy: number, reduce: boolean,
 export function octoArrive(reduce: boolean) {
   let on = false;
   try { on = sessionStorage.getItem('octo-in') === '1'; sessionStorage.removeItem('octo-in'); } catch (e) {}
-  if (!on || reduce || !document.body.animate) return;
+  if (!on || reduce || !document.body.animate) { document.documentElement.removeAttribute('data-octo'); return; }
   const ov = document.createElement('div');
   Object.assign(ov.style, { position: 'fixed', inset: '0', zIndex: '10000', background: '#0E0E0E', pointerEvents: 'none' });
   const img = document.createElement('img');
   img.src = OCTO; img.alt = '';
   Object.assign(img.style, { position: 'fixed', left: '50%', top: '50%', width: 'min(64vw, 640px)', height: 'auto', zIndex: '10001', pointerEvents: 'none', filter: 'drop-shadow(0 40px 80px rgba(227,93,23,.35))', transform: 'translate(-50%,-50%)' });
   document.body.append(ov, img);
+  document.documentElement.removeAttribute('data-octo'); // CSS örtüsünün yerini bu örtü ve ahtapot aldı
   img.animate([
     { transform: 'translate(-50%,-50%) rotate(0deg) scale(1)' },
     { transform: 'translate(-50%,-50%) translate(0, 3vh) rotate(-6deg) scale(.96)', offset: 0.25 },

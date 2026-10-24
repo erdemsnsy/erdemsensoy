@@ -11,7 +11,11 @@ const listeners = new Set<() => void>();
 function load() {
   if (loaded || typeof window === 'undefined') return;
   loaded = true;
-  try { lang = localStorage.getItem('es-lang') === 'en' ? 'en' : 'tr'; } catch (e) {}
+  // Kayıtlı tercih yoksa tarayıcı diline bak: Türkçe değilse İngilizce
+  try {
+    const saved = localStorage.getItem('es-lang');
+    lang = saved ? (saved === 'en' ? 'en' : 'tr') : (/^tr/i.test(navigator.language || 'tr') ? 'tr' : 'en');
+  } catch (e) {}
   document.documentElement.lang = lang;
 }
 const subscribe = (fn: () => void) => { listeners.add(fn); return () => { listeners.delete(fn); }; };

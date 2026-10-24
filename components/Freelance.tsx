@@ -110,6 +110,7 @@ export default function Freelance() {
   const [menu, setMenu] = useState(false);
   const [theme, setTheme] = useState('light');
   const reduceRef = useRef(false);
+  const stepsRef = useRef<HTMLDivElement>(null);
   const formRef = useRef(formOpen);
   formRef.current = formOpen;
 
@@ -143,6 +144,21 @@ export default function Freelance() {
     };
     const rs = () => setDesktop(window.innerWidth >= 760);
     rs();
+    // Süreç: kaydırdıkça çizgi dolar, ulaşılan adımların noktası dolu turuncu olur
+    const prog = () => {
+      const el = stepsRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect(), ref = window.innerHeight * 0.55, vertical = window.innerWidth < 760;
+      const p = Math.min(1, Math.max(0, vertical ? (ref - r.top) / r.height : (ref - r.top) / (window.innerHeight * 0.3)));
+      el.style.setProperty('--p', String(p));
+      [...el.children].forEach((k, i) => {
+        const on = vertical ? k.getBoundingClientRect().top < ref : p > 0 && p >= i / 4 - 0.0001;
+        k.classList.toggle('on', on);
+      });
+    };
+    prog();
+    window.addEventListener('scroll', prog, { passive: true });
+    window.addEventListener('resize', prog);
     window.addEventListener('scroll', scroll, { passive: true });
     window.addEventListener('resize', scroll);
     window.addEventListener('resize', rs);
@@ -155,6 +171,7 @@ export default function Freelance() {
     return () => {
       clearTimeout(rv); offReveal(); offMagnet();
       window.removeEventListener('scroll', scroll); window.removeEventListener('resize', scroll); window.removeEventListener('resize', rs);
+      window.removeEventListener('scroll', prog); window.removeEventListener('resize', prog);
       window.removeEventListener('keydown', key); document.removeEventListener('click', click);
       document.body.style.overflow = '';
     };
@@ -183,7 +200,10 @@ export default function Freelance() {
         <E st="max-width:1280px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
           <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10, fontWeight: 800, fontSize: 19, letterSpacing: '-0.03em' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/ahtapot.png" alt="" style={{ width: 28, height: 28 }} /><span>08dijital<span style={{ color: '#E35D17' }}>.</span></span></a>
           <E as="nav" st="display:flex;align-items:center;gap:16px 24px;flex-wrap:wrap;font-size:14px">
-            {desktop && <><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a></>}
+            {desktop && <><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a>
+              <E as="a" href="/" title={t('Portfolyo')} aria-label={t('Portfolyo')} st="width:36px;height:36px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff" hv="border-color:#fff;color:#fff">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" /></svg>
+              </E></>}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <E as="button" onClick={(e: React.MouseEvent) => toggleTheme(theme, reduceRef.current, setTheme, e)} title="Tema değiştir" st="all:unset;cursor:pointer;width:36px;height:36px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff" hv="border-color:#fff"><ThemeIcon dark={theme === 'dark'} /></E>
             </div>
@@ -199,7 +219,7 @@ export default function Freelance() {
         </E>
         {!desktop && menu && (
           <E className="m-menu" onClick={() => setMenu(false)} st="position:absolute;top:100%;left:0;right:0;background:#0E0E0E;border-bottom:1px solid #2A2A2A;padding:4px clamp(20px,4vw,48px) 20px;display:flex;flex-direction:column;box-shadow:0 20px 40px rgba(0,0,0,.35)">
-            {[['#hizmetler', 'Hizmetler'], ['#surec', 'Süreç'], ['#isler', 'İşler'], ['#sss', 'SSS']].map(([h, l]) => (
+            {[['#hizmetler', 'Hizmetler'], ['#surec', 'Süreç'], ['#isler', 'İşler'], ['#sss', 'SSS'], ['/', 'Portfolyo']].map(([h, l]) => (
               <E as="a" key={h} href={h} st="font-size:24px;font-weight:600;letter-spacing:-0.03em;padding:15px 0;border-bottom:1px solid #2A2A2A">{t(l)}</E>
             ))}
             <E as="a" href="#iletisim" st="margin-top:18px;background:#E35D17;color:#fff;padding:16px 20px;font-weight:600;font-size:16px;border-radius:999px;text-align:center" hv="background:#fff;color:#111">{t('Projeni konuşalım')}</E>
@@ -321,7 +341,7 @@ export default function Freelance() {
           </div>
           <E as="a" href="#iletisim" st="background:#111;color:#fff;padding:14px 22px;font-weight:600;border-radius:999px" hv="background:#E35D17;color:#fff">{t('Konuşmaya başla')}</E>
         </div>
-        <div className="f-steps" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,240px),1fr))', borderTop: '2px solid #111' }}>
+        <div ref={stepsRef} className="f-steps" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,240px),1fr))', borderTop: '2px solid #111' }}>
           {steps.map(([a, b, c, d, e], i) => (
             <E key={a} className="f-step" st={`position:relative;padding:${i === 0 ? '36px 28px 32px 0' : '36px 28px 32px'};display:flex;flex-direction:column;gap:14px;${i === 0 ? 'border-left:none' : 'border-left:1px solid #E6E6E6'};transition:background .25s,color .25s`} hv="background:#0E0E0E;color:#fff">
               <span style={{ position: 'absolute', top: -7, left: i === 0 ? 0 : 27, width: 12, height: 12, borderRadius: '50%', background: '#E35D17' }}></span>
@@ -392,7 +412,7 @@ export default function Freelance() {
       <footer className="lt" style={{ maxWidth: 1280, margin: '0 auto', padding: '28px clamp(20px,4vw,48px) 0', overflow: 'hidden' }}>
         <E st="display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap;font-size:14px">
           <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800, fontSize: 17, letterSpacing: '-0.03em' }}>{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/ahtapot.png" alt="" style={{ width: 24, height: 24 }} />08dijital<span style={{ color: '#E35D17', marginLeft: -8 }}>.</span></span>
-          <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', color: '#444' }}><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a><a href="https://instagram.com/08dijitalcom" target="_blank">Instagram</a><a href="/">{t('Portfolyo')}</a></nav>
+          <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', color: '#444' }}><a href="#hizmetler">{t('Hizmetler')}</a><a href="#surec">{t('Süreç')}</a><a href="#isler">{t('İşler')}</a><a href="#sss">{t('SSS')}</a><a href="https://instagram.com/08dijitalcom" target="_blank">Instagram</a></nav>
         </E>
         <div style={{ marginTop: 24, borderTop: '1px solid #E6E6E6', paddingTop: 16, display: 'flex', justifyContent: 'flex-end', gap: 16, flexWrap: 'wrap', fontSize: 13, color: '#6B6B6B' }}><a href="#top">{t('Başa dön ↑')}</a></div>
         <div style={{ fontSize: 'clamp(48px,8vw,120px)', fontWeight: 800, letterSpacing: '-0.06em', lineHeight: 1, margin: 'clamp(12px,1.6vw,20px) 0 0', paddingBottom: 'clamp(20px,2.4vw,32px)', textAlign: 'center', whiteSpace: 'nowrap', color: '#111', userSelect: 'none' }}>08dijital<span style={{ color: '#E35D17' }}>.</span></div>

@@ -86,3 +86,18 @@ html[data-octo=in] body::after{content:'';position:fixed;left:50%;top:50%;width:
 .f-step{padding-bottom:20px!important}
 #sss>div:first-child{margin-bottom:24px!important}
 }
+
+/* Süreç çizgisi: kaydırma ilerlemesi */
+.f-steps{position:relative}
+.f-steps::after{content:'';position:absolute;left:0;top:-2px;height:2px;width:calc(var(--p,0)*100%);background:#E35D17;pointer-events:none;transition:width .15s linear}
+.f-step>span:first-child{transition:background .3s,border-color .3s}
+.f-step:not(.on)>span:first-child{background:var(--bg,#fff)!important;border:2px solid #C4C4C4}
+
+@media (max-width:759px){
+.f-steps::after{left:-2px;top:0;width:2px;height:calc(var(--p,0)*100%)}
+.f-hero-in{padding-top:24px!important;padding-bottom:120px!important}
+.f-octo{width:230px!important;right:-70px!important;bottom:-55px!important}
+.f-hero-btns{flex-wrap:nowrap!important}
+.f-hero-btns a{flex:1 1 0!important;min-width:0;padding:14px 10px!important;font-size:15px!important;text-align:center}
+.f-trust{display:none!important}
+}

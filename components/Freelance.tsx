@@ -198,7 +198,7 @@ export default function Freelance() {
         )}
       </header>
 
-      <section id="top" style={{ background: '#0E0E0E', color: '#fff', overflow: 'hidden', minHeight: 'calc(100svh - 61px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <section id="top" className="f-top" style={{ background: '#0E0E0E', color: '#fff', overflow: 'hidden', minHeight: 'calc(100svh - 61px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ position: 'relative', width: '100%', flex: 1, display: 'flex', alignItems: 'center' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="f-octo" src="/ahtapot.png" alt="08dijital maskotu turuncu ahtapot" style={{ position: 'absolute', right: 'clamp(-340px,-16vw,-90px)', bottom: 'clamp(-260px,-14vw,-80px)', width: 'clamp(420px,62vw,1040px)', height: 'auto', transform: 'rotate(-22deg)', transformOrigin: '60% 60%', animation: 'octo 7s ease-in-out infinite', filter: 'drop-shadow(0 40px 80px rgba(227,93,23,.25))', pointerEvents: 'none' }} />
@@ -289,7 +289,7 @@ export default function Freelance() {
         <E st="max-width:1280px;margin:0 auto;padding:clamp(64px,7vw,96px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px">
           <div style={{ flex: '1 1 380px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/ahtapot.png" alt="" style={{ width: 'min(100%,540px)', height: 'auto', transform: 'rotate(-8deg)', filter: 'drop-shadow(0 30px 50px rgba(227,93,23,.2))' }} />
+            <img className="f-why-octo" src="/ahtapot.png" alt="" style={{ width: 'min(100%,540px)', height: 'auto', transform: 'rotate(-8deg)', filter: 'drop-shadow(0 30px 50px rgba(227,93,23,.2))' }} />
           </div>
           <div style={{ flex: '1 1 440px', display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: 14, color: '#AAA' }}>{t('04 / Neden 08dijital')}</span>
@@ -309,9 +309,9 @@ export default function Freelance() {
           </div>
           <E as="a" href="#iletisim" st="background:#111;color:#fff;padding:14px 22px;font-weight:600;border-radius:999px" hv="background:#E35D17;color:#fff">{t('Konuşmaya başla')}</E>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,240px),1fr))', borderTop: '2px solid #111' }}>
+        <div className="f-steps" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,240px),1fr))', borderTop: '2px solid #111' }}>
           {steps.map(([a, b, c, d, e], i) => (
-            <E key={a} st={`position:relative;padding:${i === 0 ? '36px 28px 32px 0' : '36px 28px 32px'};display:flex;flex-direction:column;gap:14px;${i === 0 ? 'border-left:none' : 'border-left:1px solid #E6E6E6'};transition:background .25s,color .25s`} hv="background:#0E0E0E;color:#fff">
+            <E key={a} className="f-step" st={`position:relative;padding:${i === 0 ? '36px 28px 32px 0' : '36px 28px 32px'};display:flex;flex-direction:column;gap:14px;${i === 0 ? 'border-left:none' : 'border-left:1px solid #E6E6E6'};transition:background .25s,color .25s`} hv="background:#0E0E0E;color:#fff">
               <span style={{ position: 'absolute', top: -7, left: i === 0 ? 0 : 27, width: 12, height: 12, borderRadius: '50%', background: '#E35D17' }}></span>
               <span style={{ fontSize: 13, fontWeight: 600, color: '#E35D17' }}>{t(a)}</span>
               <span style={{ fontSize: 'clamp(26px,2.4vw,32px)', fontWeight: 600, letterSpacing: '-0.035em' }}>{t(b)}</span>
@@ -325,7 +325,7 @@ export default function Freelance() {
       <section style={{ background: '#0E0E0E', color: '#fff' }}>
         <E st="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,48px)">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 36 }}><span style={{ fontSize: 14, color: '#AAA' }}>{t('06 / Karşılaştırma')}</span><h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Klasik ajans ve 08dijital')}{O}</h2></div>
-          <div style={{ overflowX: 'auto' }}><div style={{ minWidth: 560, display: 'grid', gridTemplateColumns: '0.8fr 1fr 1fr', fontSize: 15, borderTop: '1px solid #fff' }}>
+          <div style={{ overflowX: 'auto' }}><div className="f-cmp" style={{ minWidth: 560, display: 'grid', gridTemplateColumns: '0.8fr 1fr 1fr', fontSize: 15, borderTop: '1px solid #fff' }}>
             <span style={{ padding: '16px 12px 16px 0', borderBottom: '1px solid #333' }}></span><span style={{ padding: '16px 12px', borderBottom: '1px solid #333', color: '#999' }}>{t('Klasik ajans')}</span><span style={{ padding: '16px 12px', borderBottom: '1px solid #333', fontWeight: 700, color: '#E35D17' }}>08dijital</span>
             {compare.map(([a, b, c], i) => {
               const bb = i < compare.length - 1 ? { borderBottom: '1px solid #333' } : null;
@@ -349,8 +349,8 @@ export default function Freelance() {
             const o = open === i;
             return (
               <div key={qq} style={{ borderBottom: '1px solid #E6E6E6' }}>
-                <E as="button" onClick={() => setOpen(o ? -1 : i)} st="all:unset;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:18px;font-weight:500;box-sizing:border-box"><span>{t(qq)}</span><span style={{ width: 24, flex: 'none', color: '#E35D17', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, lineHeight: 1, transition: 'transform .3s ease', transform: o ? 'rotate(45deg)' : 'none' }}>+</span></E>
-                <div style={{ display: 'grid', gridTemplateRows: o ? '1fr' : '0fr', transition: 'grid-template-rows .35s ease' }}><div style={{ overflow: 'hidden' }}><p style={{ margin: 0, padding: '0 0 24px', fontSize: 16, lineHeight: 1.6, color: '#555', maxWidth: '64ch' }}>{t(a)}</p></div></div>
+                <E as="button" className="f-q" onClick={() => setOpen(o ? -1 : i)} st="all:unset;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:18px;font-weight:500;box-sizing:border-box"><span>{t(qq)}</span><span style={{ width: 24, flex: 'none', color: '#E35D17', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, lineHeight: 1, transition: 'transform .3s ease', transform: o ? 'rotate(45deg)' : 'none' }}>+</span></E>
+                <div style={{ display: 'grid', gridTemplateRows: o ? '1fr' : '0fr', transition: 'grid-template-rows .35s ease' }}><div style={{ overflow: 'hidden' }}><p className="f-a" style={{ margin: 0, padding: '0 0 24px', fontSize: 16, lineHeight: 1.6, color: '#555', maxWidth: '64ch' }}>{t(a)}</p></div></div>
               </div>
             );
           })}

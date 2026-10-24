@@ -14,12 +14,22 @@ input::placeholder,textarea::placeholder{color:#888}
 @media (max-width:759px){
 header>div{flex-wrap:nowrap!important}
 header nav{flex-wrap:nowrap!important;gap:12px 14px!important}
-.f-hero-in{padding-top:36px!important;padding-bottom:300px!important}
+.f-top{min-height:0!important}
+.f-hero-in{padding-top:32px!important;padding-bottom:200px!important}
 .f-h1{font-size:11.5vw!important}
 .f-hero-btns a{flex:1 1 auto!important;text-align:center}
-.f-octo{width:360px!important;right:-110px!important;bottom:-90px!important}
+.f-octo{width:300px!important;right:-90px!important;bottom:-70px!important}
 .f-qr{aspect-ratio:1/1!important}
 .f-chip{min-height:44px;display:inline-flex!important;align-items:center}
 .f-send a{flex:1 1 100%;text-align:center}
 .f-form-octo{width:130px!important}
+.f-why-octo{width:min(62%,230px)!important}
+.f-steps{border-top:none!important;border-left:2px solid #111;margin-left:7px}
+.f-step{padding:0 0 30px 26px!important;border-left:none!important;gap:10px!important}
+.f-step>span:first-child{left:-7px!important;top:2px!important}
+.f-cmp{min-width:0!important;font-size:13px!important}
+.f-cmp>span{padding:13px 8px!important}
+.f-cmp>span:nth-child(3n+1){padding-left:0!important}
+.f-q{font-size:16px!important;padding:18px 0!important;min-height:44px}
+.f-a{font-size:15px!important;line-height:1.55!important;padding-bottom:20px!important}
 }

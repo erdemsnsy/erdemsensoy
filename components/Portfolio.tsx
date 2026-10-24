@@ -234,14 +234,14 @@ export default function Portfolio() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4vh', marginTop: 40 }}>
             {projects.map(p => (
               <div key={p.slot} data-stack="1" style={{ position: 'sticky', top: p.top }}>
-                <E st="transform-origin:50% 0;will-change:transform;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,2.6vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px 44px;min-height:min(60vh,520px)">
+                <E className="p-card" st="transform-origin:50% 0;will-change:transform;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,2.6vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px 44px;min-height:min(60vh,520px)">
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: 14 }}><span style={{ color: '#E35D17', fontWeight: 600 }}>{t(p.num)}</span><span style={{ color: 'var(--mute)' }}>2026</span></div>
                     <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 18 }}>
                       <E as="h3" st={`margin:0;font-size:${p.titleSize};line-height:0.95;letter-spacing:-0.05em;font-weight:600`}>{t(p.title)}</E>
-                      <E as="p" st="margin:0;font-size:17px;line-height:1.55;color:var(--mute);text-wrap:pretty">{t(p.desc)}</E>
+                      <E as="p" className="p-desc" st="margin:0;font-size:17px;line-height:1.55;color:var(--mute);text-wrap:pretty">{t(p.desc)}</E>
                       {p.rows && (
-                        <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid var(--line)' }}>
+                        <div className="p-rows" style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid var(--line)' }}>
                           {p.rows.map(([k, v]) => (
                             <E key={k} st={rowSt}><span style={{ color: 'var(--mute)' }}>{t(k)}</span><span>{t(v)}</span></E>
                           ))}
@@ -253,7 +253,7 @@ export default function Portfolio() {
                       </E>
                     </div>
                   </div>
-                  <E data-cursor="Aç ↗" data-href={p.live} onClick={openLink} st="cursor:none;border-radius:18px;overflow:hidden;background:var(--chip);min-height:240px;position:relative"><ImageSlot id={p.slot} placeholder={p.slotPh} /></E>
+                  <E className="p-slot" data-cursor="Aç ↗" data-href={p.live} onClick={openLink} st="cursor:none;border-radius:18px;overflow:hidden;background:var(--chip);min-height:240px;position:relative"><ImageSlot id={p.slot} placeholder={p.slotPh} /></E>
                 </E>
               </div>
             ))}

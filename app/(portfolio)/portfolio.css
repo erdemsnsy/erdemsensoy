@@ -19,4 +19,11 @@ header>div>a{white-space:nowrap;font-size:18px!important}
 .p-hero-name{flex:none!important;height:220px!important;min-height:0!important}
 .p-hero-btns{justify-content:stretch!important}
 .p-hero-btns a{flex:1 1 auto;text-align:center;padding-left:18px!important;padding-right:18px!important}
+.p-card{min-height:0!important;padding:18px!important;gap:16px!important}
+.p-card>div:first-child{gap:14px!important}
+.p-card>div:first-child>div:last-child{gap:14px!important}
+.p-rows{display:none!important}
+.p-desc{font-size:15px!important;line-height:1.5!important}
+.p-card h3{font-size:34px!important}
+.p-slot{min-height:140px!important}
 }

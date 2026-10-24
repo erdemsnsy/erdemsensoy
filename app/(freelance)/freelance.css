@@ -44,3 +44,14 @@ html[data-theme=dark] .lt .slot-img{filter:invert(1) hue-rotate(180deg)}
 html[data-octo=in] body::before{content:'';position:fixed;inset:0;background:#0E0E0E;z-index:9999;animation:octo-fail 0s 4s forwards}
 html[data-octo=in] body::after{content:'';position:fixed;left:50%;top:50%;width:min(64vw,640px);aspect-ratio:1/1;transform:translate(-50%,-50%);background:url(/ahtapot.png) center/contain no-repeat;filter:drop-shadow(0 40px 80px rgba(227,93,23,.35));z-index:10001;pointer-events:none;animation:octo-fail 0s 4s forwards}
 @keyframes octo-fail{to{visibility:hidden}}
+
+@media (max-width:759px){
+#iletisim>div{padding:100px 20px 52px!important;gap:14px!important}
+#iletisim h2{font-size:36px!important}
+#iletisim p{font-size:15px!important}
+#iletisim>div>button{padding:15px 26px!important;font-size:16px!important;margin-top:4px!important}
+#iletisim>div>div{margin-top:20px!important;padding-top:22px!important;gap:14px!important}
+#iletisim>div>div>div{gap:10px!important}
+#iletisim a{padding:11px 18px 11px 14px!important;font-size:14px!important;gap:10px!important}
+#iletisim a svg{width:19px!important;height:19px!important}
+}

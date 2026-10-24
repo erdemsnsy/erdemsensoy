@@ -195,9 +195,7 @@ export default function Portfolio() {
                 <span style={{ color: 'var(--mute)' }}>/</span>
                 <E as="button" onClick={() => setLang('en')} st={`all:unset;cursor:pointer;font-weight:${enActive ? 700 : 400};color:${enActive ? 'var(--fg)' : 'var(--mute)'}`}>EN</E>
               </span>
-              {desktop
-                ? <E as="a" href="/freelance" data-magnetic="1" st="background:var(--fg);color:var(--bg);padding:10px 16px;font-weight:600;border-radius:999px;white-space:nowrap" hv="background:#E35D17;color:#fff">08dijital →</E>
-                : <Burger open={menu} onClick={() => setMenu(m => !m)} label="Menü" color="var(--fg)" border="var(--line)" />}
+              {!desktop && <Burger open={menu} onClick={() => setMenu(m => !m)} label="Menü" color="var(--fg)" border="var(--line)" />}
             </E>
           </E>
           {!desktop && menu && (
@@ -205,7 +203,6 @@ export default function Portfolio() {
               {[['#projeler', 'Projeler'], ['#teknolojiler', 'Teknolojiler'], ['#deneyim', 'Deneyim'], ['#iletisim', 'İletişim']].map(([h, l]) => (
                 <E as="a" key={h} href={h} st="font-size:24px;font-weight:600;letter-spacing:-0.03em;padding:15px 0;border-bottom:1px solid var(--line)">{t(l)}</E>
               ))}
-              <E as="a" href="/freelance" st="margin-top:18px;background:var(--fg);color:var(--bg);padding:16px 20px;font-weight:600;font-size:16px;border-radius:999px;text-align:center" hv="background:#E35D17;color:#fff">08dijital →</E>
             </E>
           )}
         </header>

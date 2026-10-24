@@ -31,3 +31,15 @@ header>div>a{white-space:nowrap;font-size:18px!important}
 /* Freelance'tan dönüşte JS örtüsü devralana kadar ekranı kapalı tut */
 html[data-octo=out] body::before{content:'';position:fixed;inset:0;background:var(--bg);z-index:9999;animation:octo-fail 0s 4s forwards}
 @keyframes octo-fail{to{visibility:hidden}}
+
+@media (max-width:759px){
+#iletisim>div{padding-top:40px!important;padding-bottom:44px!important;gap:12px!important}
+#iletisim h2{font-size:34px!important}
+#iletisim p{font-size:15px!important}
+#iletisim [data-reveal="180"]{margin-top:2px!important}
+#iletisim [data-reveal="180"] a,#iletisim [data-reveal="180"] button{padding:13px 22px!important;font-size:15px!important}
+#iletisim [data-reveal="240"]{gap:10px!important;margin-top:8px!important}
+#iletisim [data-reveal="240"] a{width:50px!important;height:50px!important}
+#iletisim [data-reveal="240"] svg{width:21px!important;height:21px!important}
+#iletisim [data-reveal="240"] a span{width:21px!important;height:21px!important;font-size:12px!important;border-radius:4px!important}
+}

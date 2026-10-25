@@ -29,17 +29,14 @@ header>div>a{white-space:nowrap;font-size:18px!important}
 }
 
 /* Deneyim: freelance süreç bölümü gibi, kaydırdıkça çizgi dolar ve noktalar turuncu olur */
-.p-exps{position:relative}
-.p-exps::after{content:'';position:absolute;left:0;top:-2px;height:2px;width:calc(var(--p,0)*100%);background:#E35D17;pointer-events:none;transition:width .15s linear}
-.p-dot{background:var(--bg);border:2px solid var(--mute);transition:background .3s,border-color .3s}
-.p-exp.on .p-dot{background:#E35D17;border-color:#E35D17}
-@media (max-width:759px){
-.p-exps{border-top:none!important;display:block!important;border-left:2px solid var(--fg);margin-left:7px}
-.p-exps::after{left:-2px;top:0;width:2px;height:calc(var(--p,0)*100%)}
-.p-exp{padding:0 0 30px 26px!important;border-left:none!important;gap:8px!important}
+.p-exps{position:relative;border-top:none!important;display:block!important;border-left:2px solid var(--fg);margin-left:7px}
+.p-exps::after{content:'';position:absolute;left:-2px;top:0;width:2px;height:calc(var(--p,0)*100%);background:#E35D17;pointer-events:none;transition:height .15s linear}
+.p-exp{padding:0 0 44px clamp(26px,3vw,40px)!important;border-left:none!important;gap:8px!important}
 .p-exp:last-child{padding-bottom:0!important}
-.p-dot{left:-7px!important;top:2px!important}
-}
+.p-dot{left:-7px!important;top:2px!important;background:var(--bg);border:2px solid var(--mute);transition:background .3s,border-color .3s}
+.p-exp.on .p-dot{background:#E35D17;border-color:#E35D17}
+.p-exp>p{max-width:68ch}
+.p-exp>a{max-width:720px}
 
 /* Freelance'tan dönüşte JS örtüsü devralana kadar ekranı kapalı tut */
 html[data-octo=out] body::before{content:'';position:fixed;inset:0;background:var(--bg);z-index:9999;animation:octo-fail 0s 4s forwards}

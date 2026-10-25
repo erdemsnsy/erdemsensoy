@@ -137,10 +137,9 @@ export default function Portfolio() {
     const prog = () => {
       const el = document.querySelector<HTMLElement>('.p-exps');
       if (!el) return;
-      const r = el.getBoundingClientRect(), ref = window.innerHeight * 0.55, vertical = window.innerWidth < 760, n = el.children.length;
-      const p = Math.min(1, Math.max(0, vertical ? (ref - r.top) / r.height : (ref - r.top) / (window.innerHeight * 0.3)));
-      el.style.setProperty('--p', String(p));
-      [...el.children].forEach((k, i) => k.classList.toggle('on', vertical ? k.getBoundingClientRect().top < ref : p > 0 && p >= i / n - 0.0001));
+      const r = el.getBoundingClientRect(), ref = window.innerHeight * 0.55;
+      el.style.setProperty('--p', String(Math.min(1, Math.max(0, (ref - r.top) / r.height))));
+      [...el.children].forEach(k => k.classList.toggle('on', k.getBoundingClientRect().top < ref));
     };
     prog();
     window.addEventListener('scroll', prog, { passive: true });

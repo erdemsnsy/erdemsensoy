@@ -95,6 +95,7 @@ html[data-octo=in] body::after{content:'';position:fixed;left:50%;top:50%;width:
 
 @media (max-width:759px){
 .f-steps::after{left:-2px;top:0;width:2px;height:calc(var(--p,0)*100%)}
+.f-hq{display:none!important}
 .f-hero-in{padding-top:24px!important;padding-bottom:120px!important}
 .f-octo{width:230px!important;right:-70px!important;bottom:-55px!important}
 .f-hero-btns{flex-wrap:nowrap!important}

@@ -28,6 +28,21 @@ header>div>a{white-space:nowrap;font-size:18px!important}
 .p-slot{min-height:140px!important}
 }
 
+/* Deneyim (mobil): tarih içerikle aynı sütunda, tek kesintisiz çizgi, kaydırdıkça dolar */
+@media (max-width:759px){
+.p-exps{position:relative;margin-left:6px}
+.p-exps::before,.p-exps::after{content:'';position:absolute;left:0;top:0;width:2px;pointer-events:none}
+.p-exps::before{height:100%;background:var(--line)}
+.p-exps::after{height:calc(var(--p,0)*100%);background:#E35D17;transition:height .15s linear}
+.p-exp{display:block!important;position:relative;padding-left:26px}
+.p-exp>div{flex:none!important;width:auto!important;position:static!important;border-left:none!important;padding-left:0!important}
+.p-exp>div:first-child{flex-direction:row!important;align-items:center!important;flex-wrap:wrap}
+.p-exp>div:last-child{padding-top:10px!important}
+.p-dot{left:-5px!important;top:30px!important;transition:background .3s,border-color .3s}
+.p-dot:not(.now){background:var(--bg)!important;border:2px solid var(--mute)!important}
+.p-exp.on .p-dot{background:#E35D17!important;border:none!important}
+}
+
 /* Freelance'tan dönüşte JS örtüsü devralana kadar ekranı kapalı tut */
 html[data-octo=out] body::before{content:'';position:fixed;inset:0;background:var(--bg);z-index:9999;animation:octo-fail 0s 4s forwards}
 @keyframes octo-fail{to{visibility:hidden}}

@@ -251,7 +251,7 @@ export default function Freelance() {
             <span style={{ fontSize: 14, color: '#6B6B6B' }}>{t('01 / Hizmetler')}</span>
             <E as="h2" st={`${H2};max-width:20ch`}>{t('İşletmenin internette ihtiyacı olan her şey, tek kişiden.')}</E>
           </div>
-          <E as="a" href="#iletisim" st="border:1px solid #CCC;padding:13px 20px;font-size:15px" hv="border-color:#111;color:#111">{t('Teklif al →')}</E>
+          <E as="a" className="f-hq" href="#iletisim" st="border:1px solid #CCC;padding:13px 20px;font-size:15px" hv="border-color:#111;color:#111">{t('Teklif al →')}</E>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,340px),1fr))', borderTop: '1px solid #E6E6E6', borderLeft: '1px solid #E6E6E6' }}>
           {services.map(s => (

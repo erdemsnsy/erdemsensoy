@@ -133,6 +133,18 @@ export default function Portfolio() {
     rs();
     window.addEventListener('resize', rs);
 
+    // Deneyim (mobil): kaydırdıkça çizgi dolar, ulaşılan kayıtların noktası turuncu olur
+    const prog = () => {
+      const el = document.querySelector<HTMLElement>('.p-exps');
+      if (!el) return;
+      const r = el.getBoundingClientRect(), ref = window.innerHeight * 0.55;
+      el.style.setProperty('--p', String(Math.min(1, Math.max(0, (ref - r.top) / r.height))));
+      [...el.children].forEach(k => k.classList.toggle('on', k.getBoundingClientRect().top < ref));
+    };
+    prog();
+    window.addEventListener('scroll', prog, { passive: true });
+    window.addEventListener('resize', prog);
+
     const key = (e: KeyboardEvent) => onKey(e, live.current, live.current.list, {
       togglePal: () => { setPal(p => !p); setQ(''); setIdx(0); },
       close: () => { setPal(false); setCode(false); setMenu(false); },
@@ -159,7 +171,7 @@ export default function Portfolio() {
     const offs = [() => { clearTimeout(heroT); offHero(); }, startStack(rd), startReveal(rd), startMagnet(rd)];
     if (matchMedia('(pointer: fine)').matches) offs.push(startCursor());
     return () => {
-      window.removeEventListener('resize', rs); window.removeEventListener('keydown', key); document.removeEventListener('click', click);
+      window.removeEventListener('resize', rs); window.removeEventListener('scroll', prog); window.removeEventListener('resize', prog); window.removeEventListener('keydown', key); document.removeEventListener('click', click);
       offs.forEach(f => f());
     };
   }, [goFreelance]);
@@ -279,12 +291,12 @@ export default function Portfolio() {
             <span style={{ fontSize: 14, color: 'var(--mute)' }}>{t('03 / Deneyim')}</span>
             <h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Deneyim ve eğitim')}{O}</h2>
           </div>
-          <div style={{ borderTop: '2px solid var(--fg)', display: 'flex', flexDirection: 'column' }}>
+          <div className="p-exps" style={{ borderTop: '2px solid var(--fg)', display: 'flex', flexDirection: 'column' }}>
             {exps.map(x => (
-              <E key={x.title} data-reveal="0" st="display:flex;flex-wrap:wrap;gap:0 clamp(20px,4vw,56px)">
+              <E key={x.title} className="p-exp" data-reveal="0" st="display:flex;flex-wrap:wrap;gap:0 clamp(20px,4vw,56px)">
                 <E st="flex:0 0 180px;padding:24px 0 0;display:flex;flex-direction:column;gap:10px;align-items:flex-start"><span style={{ fontSize: 15, color: 'var(--mute)', lineHeight: 1.4, textWrap: 'balance' }}>{t(x.date)}</span>{x.now && <span style={{ fontSize: 12, fontWeight: 600, color: '#E35D17', border: '1px solid #E35D17', padding: '3px 10px', borderRadius: 999 }}>{t('Şu an')}</span>}</E>
                 <E st="flex:1 1 320px;min-width:0;position:relative;padding:24px 0 24px clamp(24px,3vw,40px);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
-                  <E as="span" st={x.now ? 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:#E35D17' : 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--mute);box-sizing:border-box'}></E>
+                  <E as="span" className={x.now ? 'p-dot now' : 'p-dot'} st={x.now ? 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:#E35D17' : 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--mute);box-sizing:border-box'}></E>
                   <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--mute)' }}>{t(x.kind)}</span>
                   <E as="span" st="font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-0.03em;line-height:1.15">{t(x.title)}</E>
                   <span style={{ fontSize: 16, color: 'var(--mute)' }}>{t(x.org)}</span>

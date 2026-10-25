@@ -137,9 +137,10 @@ export default function Portfolio() {
     const prog = () => {
       const el = document.querySelector<HTMLElement>('.p-exps');
       if (!el) return;
-      const r = el.getBoundingClientRect(), ref = window.innerHeight * 0.55;
-      el.style.setProperty('--p', String(Math.min(1, Math.max(0, (ref - r.top) / r.height))));
-      [...el.children].forEach(k => k.classList.toggle('on', k.getBoundingClientRect().top < ref));
+      const r = el.getBoundingClientRect(), ref = window.innerHeight * 0.55, vertical = window.innerWidth < 760, n = el.children.length;
+      const p = Math.min(1, Math.max(0, vertical ? (ref - r.top) / r.height : (ref - r.top) / (window.innerHeight * 0.3)));
+      el.style.setProperty('--p', String(p));
+      [...el.children].forEach((k, i) => k.classList.toggle('on', vertical ? k.getBoundingClientRect().top < ref : p > 0 && p >= i / n - 0.0001));
     };
     prog();
     window.addEventListener('scroll', prog, { passive: true });
@@ -291,16 +292,15 @@ export default function Portfolio() {
             <span style={{ fontSize: 14, color: 'var(--mute)' }}>{t('03 / Deneyim')}</span>
             <h2 style={{ margin: 0, fontSize: 'clamp(30px,3.4vw,46px)', lineHeight: 1.05, letterSpacing: '-0.04em', fontWeight: 600 }}>{t('Deneyim ve eğitim')}{O}</h2>
           </div>
-          <div className="p-exps" style={{ borderTop: '2px solid var(--fg)', display: 'flex', flexDirection: 'column' }}>
-            {exps.map(x => (
-              <E key={x.title} className="p-exp" data-reveal="0" st="display:flex;flex-wrap:wrap;gap:0 clamp(20px,4vw,56px)">
-                <E st="flex:0 0 180px;padding:24px 0 0;display:flex;flex-direction:column;gap:10px;align-items:flex-start"><span style={{ fontSize: 15, color: 'var(--mute)', lineHeight: 1.4, textWrap: 'balance' }}>{t(x.date)}</span>{x.now && <span style={{ fontSize: 12, fontWeight: 600, color: '#E35D17', border: '1px solid #E35D17', padding: '3px 10px', borderRadius: 999 }}>{t('Şu an')}</span>}</E>
-                <E st="flex:1 1 320px;min-width:0;position:relative;padding:24px 0 24px clamp(24px,3vw,40px);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
-                  <E as="span" className={x.now ? 'p-dot now' : 'p-dot'} st={x.now ? 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:#E35D17' : 'position:absolute;left:-6px;top:30px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--mute);box-sizing:border-box'}></E>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--mute)' }}>{t(x.kind)}</span>
-                  <E as="span" st="font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-0.03em;line-height:1.15">{t(x.title)}</E>
-                  <span style={{ fontSize: 16, color: 'var(--mute)' }}>{t(x.org)}</span>
-                  <p style={{ margin: '8px 0 0', fontSize: 16, lineHeight: 1.6, maxWidth: '68ch', opacity: 0.82 }}>{t(x.text)}</p>
+          <div className="p-exps" style={{ borderTop: '2px solid var(--fg)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))' }}>
+            {exps.map((x, i) => (
+              <E key={x.title} className="p-exp" data-reveal="0" st={`position:relative;padding:${i === 0 ? '36px 28px 32px 0' : '36px 28px 32px'};display:flex;flex-direction:column;gap:10px;${i === 0 ? '' : 'border-left:1px solid var(--line)'}`}>
+                <span className="p-dot" style={{ position: 'absolute', top: -7, left: i === 0 ? 0 : 27, width: 12, height: 12, borderRadius: '50%', boxSizing: 'border-box' }}></span>
+                <div className="p-date" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px 12px' }}><span style={{ fontSize: 14, color: 'var(--mute)' }}>{t(x.date)}</span>{x.now && <span style={{ fontSize: 12, fontWeight: 600, color: '#E35D17', border: '1px solid #E35D17', padding: '2px 9px', borderRadius: 999 }}>{t('Şu an')}</span>}</div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: '#E35D17', marginTop: 6 }}>{t(x.kind)}</span>
+                <E as="span" st="font-size:clamp(24px,2.2vw,30px);font-weight:600;letter-spacing:-0.035em;line-height:1.15">{t(x.title)}</E>
+                <span style={{ fontSize: 15, color: 'var(--mute)' }}>{t(x.org)}</span>
+                <p style={{ margin: '6px 0 0', fontSize: 15, lineHeight: 1.6, opacity: 0.82 }}>{t(x.text)}</p>
                   {x.octo && (
                     <E as="a" href="/freelance" data-cursor="Git →" st="cursor:none;display:flex;align-items:center;background:var(--sbg);color:#fff;padding:clamp(20px,2.4vw,32px);min-height:clamp(160px,14vw,200px);overflow:hidden;position:relative;border-radius:20px;margin:8px 0 4px;max-width:720px" hv="color:#fff">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -313,7 +313,6 @@ export default function Portfolio() {
                       </div>
                     </E>
                   )}
-                </E>
               </E>
             ))}
           </div>

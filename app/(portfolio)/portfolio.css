@@ -28,19 +28,17 @@ header>div>a{white-space:nowrap;font-size:18px!important}
 .p-slot{min-height:140px!important}
 }
 
-/* Deneyim (mobil): tarih içerikle aynı sütunda, tek kesintisiz çizgi, kaydırdıkça dolar */
+/* Deneyim: freelance süreç bölümü gibi, kaydırdıkça çizgi dolar ve noktalar turuncu olur */
+.p-exps{position:relative}
+.p-exps::after{content:'';position:absolute;left:0;top:-2px;height:2px;width:calc(var(--p,0)*100%);background:#E35D17;pointer-events:none;transition:width .15s linear}
+.p-dot{background:var(--bg);border:2px solid var(--mute);transition:background .3s,border-color .3s}
+.p-exp.on .p-dot{background:#E35D17;border-color:#E35D17}
 @media (max-width:759px){
-.p-exps{position:relative;margin-left:6px}
-.p-exps::before,.p-exps::after{content:'';position:absolute;left:0;top:0;width:2px;pointer-events:none}
-.p-exps::before{height:100%;background:var(--line)}
-.p-exps::after{height:calc(var(--p,0)*100%);background:#E35D17;transition:height .15s linear}
-.p-exp{display:block!important;position:relative;padding-left:26px}
-.p-exp>div{flex:none!important;width:auto!important;position:static!important;border-left:none!important;padding-left:0!important}
-.p-exp>div:first-child{flex-direction:row!important;align-items:center!important;flex-wrap:wrap}
-.p-exp>div:last-child{padding-top:10px!important}
-.p-dot{left:-5px!important;top:30px!important;transition:background .3s,border-color .3s}
-.p-dot:not(.now){background:var(--bg)!important;border:2px solid var(--mute)!important}
-.p-exp.on .p-dot{background:#E35D17!important;border:none!important}
+.p-exps{border-top:none!important;display:block!important;border-left:2px solid var(--fg);margin-left:7px}
+.p-exps::after{left:-2px;top:0;width:2px;height:calc(var(--p,0)*100%)}
+.p-exp{padding:0 0 30px 26px!important;border-left:none!important;gap:8px!important}
+.p-exp:last-child{padding-bottom:0!important}
+.p-dot{left:-7px!important;top:2px!important}
 }
 
 /* Freelance'tan dönüşte JS örtüsü devralana kadar ekranı kapalı tut */
